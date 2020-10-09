@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableCell" rowHeight="206" id="KGk-i7-Jjw" customClass="MovieTableCell" customModule="BookMyShow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="206"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="196" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-6J-Iov" userLabel="mainView" customClass="CardView" customModule="BookMyShow" customModuleProvider="target">
+                        <rect key="frame" x="10" y="5" width="375" height="196"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-8I-M2W">
+                                <rect key="frame" x="10" y="10" width="80" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="bhe-O7-n1W"/>
+                                    <constraint firstAttribute="width" constant="80" id="tIs-Ej-qzZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-6a-Hwn">
+                                <rect key="frame" x="110" y="15" width="255" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-4C-Fb4">
+                                <rect key="frame" x="110" y="44" width="255" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7w-Fx-t9h">
+                                <rect key="frame" x="0.0" y="140" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.84705882352941175" green="0.27450980392156865" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RSy-3X-JcJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="BOOK NOW">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xQ4-8I-M2W" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" constant="10" id="264-g7-lDg"/>
+                            <constraint firstAttribute="trailing" secondItem="T4q-4C-Fb4" secondAttribute="trailing" constant="10" id="56O-mp-qtJ"/>
+                            <constraint firstItem="T4q-4C-Fb4" firstAttribute="top" secondItem="Ucr-6a-Hwn" secondAttribute="bottom" constant="10" id="87I-YD-yfR"/>
+                            <constraint firstItem="c7w-Fx-t9h" firstAttribute="top" secondItem="xQ4-8I-M2W" secondAttribute="bottom" constant="10" id="Bnn-K3-CEr"/>
+                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="top" secondItem="xQ4-8I-M2W" secondAttribute="top" constant="5" id="K3M-md-XA6"/>
+                            <constraint firstItem="xQ4-8I-M2W" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="10" id="Mp9-bp-GTy"/>
+                            <constraint firstItem="c7w-Fx-t9h" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" id="VYH-TO-QhX"/>
+                            <constraint firstAttribute="bottom" secondItem="c7w-Fx-t9h" secondAttribute="bottom" id="Wb3-Vu-Upb"/>
+                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="leading" secondItem="xQ4-8I-M2W" secondAttribute="trailing" constant="20" id="XWd-LC-agl"/>
+                            <constraint firstItem="T4q-4C-Fb4" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="gsq-KB-IOF"/>
+                            <constraint firstAttribute="trailing" secondItem="Ucr-6a-Hwn" secondAttribute="trailing" constant="10" id="hqL-eZ-qT6"/>
+                            <constraint firstAttribute="trailing" secondItem="c7w-Fx-t9h" secondAttribute="trailing" id="ynF-Ms-9WQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xlM-6J-Iov" secondAttribute="bottom" constant="5" id="Fmh-3H-kRb"/>
+                    <constraint firstItem="xlM-6J-Iov" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="T7H-GC-io1"/>
+                    <constraint firstAttribute="trailing" secondItem="xlM-6J-Iov" secondAttribute="trailing" constant="10" id="XRm-ey-57X"/>
+                    <constraint firstItem="xlM-6J-Iov" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="tgV-7j-Bwd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="192.0289855072464" y="204.91071428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
