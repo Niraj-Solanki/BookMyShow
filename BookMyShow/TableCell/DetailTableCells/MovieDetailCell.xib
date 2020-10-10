@@ -27,6 +27,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="386" height="450"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-ls-3WR">
+                                        <rect key="frame" x="0.0" y="0.0" width="386" height="450"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="playAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8xz-Gk-Ddx"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWY-gx-tiA" userLabel="movieOverView">
                                         <rect key="frame" x="0.0" y="270" width="386" height="180"/>
                                         <subviews>
@@ -63,12 +70,6 @@
                                             <constraint firstAttribute="trailing" secondItem="LAR-nz-bH9" secondAttribute="trailing" constant="10" id="yx6-Hv-sfn"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-ls-3WR">
-                                        <rect key="frame" x="0.0" y="0.0" width="386" height="270"/>
-                                        <connections>
-                                            <action selector="playAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8xz-Gk-Ddx"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -76,13 +77,13 @@
                                     <constraint firstItem="oGm-MV-x84" firstAttribute="top" secondItem="A1z-xe-i16" secondAttribute="top" id="CNh-IN-LQi"/>
                                     <constraint firstAttribute="bottom" secondItem="OWY-gx-tiA" secondAttribute="bottom" id="JKb-DT-9bk"/>
                                     <constraint firstItem="oGm-MV-x84" firstAttribute="leading" secondItem="A1z-xe-i16" secondAttribute="leading" id="LdA-9K-LXn"/>
-                                    <constraint firstItem="OWY-gx-tiA" firstAttribute="top" secondItem="F5Y-ls-3WR" secondAttribute="bottom" id="O4d-aA-4tF"/>
                                     <constraint firstItem="OWY-gx-tiA" firstAttribute="leading" secondItem="A1z-xe-i16" secondAttribute="leading" id="Osl-Bj-VO9"/>
                                     <constraint firstItem="F5Y-ls-3WR" firstAttribute="top" secondItem="A1z-xe-i16" secondAttribute="top" id="aMx-CK-SnD"/>
                                     <constraint firstAttribute="trailing" secondItem="oGm-MV-x84" secondAttribute="trailing" id="aiS-My-umr"/>
                                     <constraint firstAttribute="bottom" secondItem="oGm-MV-x84" secondAttribute="bottom" id="bA6-RK-WkS"/>
                                     <constraint firstAttribute="height" constant="450" id="bNn-fE-2FL"/>
                                     <constraint firstAttribute="trailing" secondItem="F5Y-ls-3WR" secondAttribute="trailing" id="cxa-xE-MYB"/>
+                                    <constraint firstAttribute="bottom" secondItem="F5Y-ls-3WR" secondAttribute="bottom" id="hLR-LT-3xh"/>
                                     <constraint firstItem="F5Y-ls-3WR" firstAttribute="leading" secondItem="A1z-xe-i16" secondAttribute="leading" id="iLH-Me-1sT"/>
                                 </constraints>
                             </view>
@@ -134,6 +135,36 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                                 <color key="textColor" name="NG800"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gY2-OT-8Ml" userLabel="ratingView">
+                                <rect key="frame" x="0.0" y="465" width="100" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7l-DQ-t1a">
+                                        <rect key="frame" x="40" y="0.0" width="60" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" name="NG100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YfD-3L-n23">
+                                        <rect key="frame" x="10" y="2.5" width="20" height="20"/>
+                                        <color key="tintColor" name="NG100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="cEh-Cr-DBy"/>
+                                            <constraint firstAttribute="height" constant="20" id="eZC-4h-1e1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="P700"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="8p2-JV-LGr"/>
+                                    <constraint firstAttribute="bottom" secondItem="L7l-DQ-t1a" secondAttribute="bottom" id="D8b-6i-7Ia"/>
+                                    <constraint firstAttribute="trailing" secondItem="L7l-DQ-t1a" secondAttribute="trailing" id="PRo-Nh-yVZ"/>
+                                    <constraint firstItem="YfD-3L-n23" firstAttribute="leading" secondItem="gY2-OT-8Ml" secondAttribute="leading" constant="10" id="PwR-bg-5qD"/>
+                                    <constraint firstItem="YfD-3L-n23" firstAttribute="centerY" secondItem="L7l-DQ-t1a" secondAttribute="centerY" id="VZs-Af-mww"/>
+                                    <constraint firstAttribute="width" constant="100" id="XO0-dy-aOu"/>
+                                    <constraint firstItem="L7l-DQ-t1a" firstAttribute="top" secondItem="gY2-OT-8Ml" secondAttribute="top" id="d6v-ok-UpX"/>
+                                    <constraint firstItem="L7l-DQ-t1a" firstAttribute="leading" secondItem="gY2-OT-8Ml" secondAttribute="leading" constant="40" id="npq-j9-Rvu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -141,6 +172,8 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                             <constraint firstItem="A1z-xe-i16" firstAttribute="top" secondItem="A0t-h3-wnj" secondAttribute="top" id="9vk-y7-3VQ"/>
                             <constraint firstItem="5ux-UB-xms" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" id="IPQ-Sw-Tc9"/>
                             <constraint firstItem="jpM-lB-qwc" firstAttribute="top" secondItem="5ux-UB-xms" secondAttribute="bottom" constant="20" id="M7d-24-5sS"/>
+                            <constraint firstItem="gY2-OT-8Ml" firstAttribute="centerY" secondItem="MpW-mt-tLp" secondAttribute="centerY" id="Puh-fa-8bx"/>
+                            <constraint firstItem="gY2-OT-8Ml" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" id="S51-gH-swR"/>
                             <constraint firstAttribute="trailing" secondItem="A1z-xe-i16" secondAttribute="trailing" id="WCO-em-yKU"/>
                             <constraint firstItem="5ux-UB-xms" firstAttribute="top" secondItem="aTN-lr-FFm" secondAttribute="bottom" constant="20" id="ivy-9x-hmf"/>
                             <constraint firstAttribute="trailing" secondItem="jpM-lB-qwc" secondAttribute="trailing" constant="20" id="kDO-W7-iyO"/>
@@ -166,6 +199,8 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                 <outlet property="movieTitleLabel" destination="LAR-nz-bH9" id="P61-53-I3c"/>
                 <outlet property="overviewLabel" destination="2v8-TV-LXd" id="NFA-pj-kjy"/>
                 <outlet property="posterImageView" destination="oGm-MV-x84" id="Rl3-pu-9Vb"/>
+                <outlet property="ratingLabel" destination="L7l-DQ-t1a" id="FWk-5S-0PA"/>
+                <outlet property="ratingView" destination="gY2-OT-8Ml" id="8Ip-SR-YX0"/>
                 <outlet property="releaseView" destination="aTN-lr-FFm" id="C88-RD-CWO"/>
                 <outlet property="rreleaseDateLabel" destination="MpW-mt-tLp" id="I3P-kE-6lZ"/>
                 <outlet property="storyLineLabel" destination="jpM-lB-qwc" id="uJX-e9-zrT"/>
@@ -175,6 +210,8 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
         </tableViewCell>
     </objects>
     <resources>
+        <image name="play" width="34" height="35"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="NG100">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

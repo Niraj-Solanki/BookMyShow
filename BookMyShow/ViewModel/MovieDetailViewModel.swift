@@ -19,6 +19,7 @@ class MovieDetailViewModel : NSObject {
     
     var observerBlock:((_ observerType:MovieDetailObserverEnum)->Void)?
     private var cellViewModels:[AnyObject] = [AnyObject]()
+    private var movieVideos:MovieVideosModel?
     
     override init() {
     }
@@ -28,6 +29,7 @@ class MovieDetailViewModel : NSObject {
         self.getMovieDetails(movieId: movieId)
         self.getMovieCredits(movieId: movieId)
         self.getSimilarMovies(movieId: movieId)
+        self.getTrailerUrl(movieId: movieId)
     }
     
     //NIB
@@ -59,6 +61,13 @@ class MovieDetailViewModel : NSObject {
     
     var items:[AnyObject] {
         return cellViewModels
+    }
+    
+    var trailerUrl:URL?{
+        if let url = movieVideos?.trailers?.first, let videoURL = URL(string: url.urlString ?? "") {
+            return videoURL
+        }
+        return nil
     }
     
     //
@@ -105,7 +114,7 @@ class MovieDetailViewModel : NSObject {
                     let jsonDecoder = JSONDecoder()
                     do {
                         let creditsData = try jsonDecoder.decode(CreditsModel.self, from: data)
-                        if let cast = creditsData.cast {
+                        if let cast = creditsData.cast, cast.count > 0 {
                             if self.cellViewModels.count > 1 {
                                 self.cellViewModels.insert(CastCrewCellViewModel(castArray: cast) as AnyObject, at: 1)
                             }
@@ -114,7 +123,7 @@ class MovieDetailViewModel : NSObject {
                             }
                         }
                         
-                        if let crew = creditsData.crew {
+                        if let crew = creditsData.crew, crew.count > 0 {
                             if self.cellViewModels.count > 2 {
                                 self.cellViewModels.insert(CastCrewCellViewModel(crewArray: crew) as AnyObject, at: 2)
                             }
@@ -163,5 +172,29 @@ class MovieDetailViewModel : NSObject {
             }
         }
     }
+    
+    private func getTrailerUrl(movieId:Int) {
+          self.observerBlock?(.dataLoading)
+          let httpClient = HTTPClient.init(session: URLSession.shared)
+          httpClient.dataTask(MovieDB.movieTrailer(movieId)) { [weak self] (result) in
+              guard let self = self else { return }
+              
+              switch result {
+              case .success(let data):
+                  guard let data = data else { return }
+                  
+                  let jsonDecoder = JSONDecoder()
+                  do {
+                    self.movieVideos = try jsonDecoder.decode(MovieVideosModel.self, from: data)
+                  } catch {
+                      print(error.localizedDescription)
+                      self.observerBlock?(.dataFailed)
+                  }
+                  
+              case .failure(_):
+                  self.observerBlock?(.dataFailed)
+              }
+          }
+      }
     
 }

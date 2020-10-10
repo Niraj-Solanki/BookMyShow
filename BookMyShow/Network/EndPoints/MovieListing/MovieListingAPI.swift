@@ -13,6 +13,7 @@ enum MovieDB {
     case movieDetails(Int) // Movie ID
     case movieCredits(Int) // MovieID
     case similarMoview(Int) // MovieID
+    case movieTrailer(Int) // MovieID
 }
 
 extension MovieDB: RequestProtocol {
@@ -41,6 +42,8 @@ extension MovieDB: RequestProtocol {
             return "3/movie/\(movieId)/credits"
         case .similarMoview(let movieId):
             return "3/movie/\(movieId)/similar"
+        case .movieTrailer(let movieId):
+            return "3/movie/\(movieId)/videos"
         }
     }
     

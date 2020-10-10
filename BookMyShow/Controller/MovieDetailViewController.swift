@@ -14,7 +14,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieDetailTableView: UITableView!
     
     // MARK: - Objects
-    var movieModel:MovieCellViewModel!
     var viewModel:MovieDetailViewModel = MovieDetailViewModel()
     
     // MARK: - Life Cycle
@@ -54,6 +53,14 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    func playVideo() {
+        if let videoURL = viewModel.trailerUrl {
+            let webPlayer = WebVideoPlayerVC.init(nibName: "WebVideoPlayerVC", bundle: nil)
+            webPlayer.videoUrl = videoURL
+            navigationController?.pushViewController(webPlayer, animated: true)
+        }
+    }
+    
     // MARK: - Action Methods
     @IBAction func backAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -71,7 +78,10 @@ extension MovieDetailViewController : UITableViewDelegate,UITableViewDataSource
         // Movie Synopsis
         if let movieDetailModel = viewModel.items[indexPath.row] as? MovieDetailedModel {
             let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.detailCellIdentifier) as! MovieDetailCell
-            cell.configureCell(viewModel: MovieDetailCellViewModel.init(movie: movieDetailModel))
+            cell.configureCell(viewModel: MovieDetailCellViewModel(movie: movieDetailModel))
+            cell.playBackBlock = { [weak self] in
+                self?.playVideo()
+            }
             return cell
         }
         
@@ -84,9 +94,14 @@ extension MovieDetailViewController : UITableViewDelegate,UITableViewDataSource
         
         // Similar Moview
         if let similarMovieData = viewModel.items[indexPath.row] as? MoviesModel {
-                let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.similarMovieCellIdentifier) as! SimilarMovieTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.similarMovieCellIdentifier) as! SimilarMovieTableCell
             cell.configureCell(SimilarTableCellViewModel(modelData: similarMovieData))
-                return cell
+            cell.openMovieDetailBlock = {[weak self] (movieId) in
+                let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
+                detailViewController.configureViewModel(movieID: movieId)
+                self?.navigationController?.pushViewController(detailViewController, animated: true)
+            }
+            return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.detailCellIdentifier) as! MovieDetailCell

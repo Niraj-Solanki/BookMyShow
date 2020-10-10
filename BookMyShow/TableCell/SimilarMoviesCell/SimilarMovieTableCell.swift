@@ -15,6 +15,8 @@ class SimilarMovieTableCell: UITableViewCell {
     
     //MARK:- Objects
     var viewModel:SimilarTableCellViewModel = SimilarTableCellViewModel()
+    var openMovieDetailBlock:((Int)->Void)?
+    
     //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,6 +53,9 @@ extension SimilarMovieTableCell : UICollectionViewDelegate,UICollectionViewDataS
         return movieCell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        openMovieDetailBlock?(viewModel.items[indexPath.row].id ?? 0)
+    }
 }
 
 extension SimilarMovieTableCell: UICollectionViewDelegateFlowLayout {

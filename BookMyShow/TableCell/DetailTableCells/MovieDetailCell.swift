@@ -18,9 +18,15 @@ class MovieDetailCell: UITableViewCell {
     @IBOutlet weak var storyLineLabel: UILabel!
     @IBOutlet weak var rreleaseDateLabel: UILabel!
     
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var storyLineView: UIView!
     @IBOutlet weak var releaseView: UIView!
     @IBOutlet weak var movieGradientView: UIView!
+    
+    //MARK:- Objects
+    var playBackBlock:(()->Void)?
+    
     //MARK:- LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +40,8 @@ class MovieDetailCell: UITableViewCell {
         releaseView.layer.cornerRadius = 12.5
         storyLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         storyLineView.layer.cornerRadius = 12.5
+        ratingView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        ratingView.layer.cornerRadius = 12.5
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: movieGradientView.frame.size.height)
@@ -54,6 +62,8 @@ class MovieDetailCell: UITableViewCell {
         movieTitleLabel.text = viewModel.movieTitle
         overviewLabel.text = viewModel.languages
         rreleaseDateLabel.text = viewModel.releaseDate
+        ratingLabel.text = viewModel.rating
+        
         viewModel.downloadImage(completion: { [weak self] (image) in
             self?.posterImageView.image = image
         })
@@ -61,5 +71,6 @@ class MovieDetailCell: UITableViewCell {
     
     //MARK:- Actions
     @IBAction func playAction(_ sender: UIButton) {
+        playBackBlock?()
     }
 }

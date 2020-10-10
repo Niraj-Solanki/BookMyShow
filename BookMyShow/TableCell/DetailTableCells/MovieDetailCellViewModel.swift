@@ -23,6 +23,10 @@ class MovieDetailCellViewModel {
         return movieModel?.release_date?.convertDateFormater() ?? "Update Soon!"
     }
     
+    var rating:String{
+          return "\(movieModel?.vote_average ?? 0)"
+      }
+    
     var languages:String{
         return movieModel?.spokenLanguages?.map({ (language) -> String in
             return " " + Constants.StaticData.bulletSymbol + " " + (language.name ?? "")
@@ -35,7 +39,10 @@ class MovieDetailCellViewModel {
     }
     
     var storyline:String {
-        return movieModel?.overview ?? ""
+        if let overView = movieModel?.overview,overView.count > 0 {
+            return overView
+        }
+        return "No Story line Available."
     }
     
     
