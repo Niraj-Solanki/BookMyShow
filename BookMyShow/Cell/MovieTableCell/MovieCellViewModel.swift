@@ -28,6 +28,11 @@ class MovieCellViewModel: NSObject {
         return "\(Constants.Service.imageBaseUrl)\(movieModel?.poster_path ?? (movieModel?.backdrop_path ?? ""))"
     }
     
+    var storyline:String {
+        return "It's been ten years since the creation of the Great Truce, an elaborate joint-species surveillance system designed and monitored by cats and dogs to keep the peace when conflicts arise. But when a tech-savvy villain hacks into wireless networks to use frequencies only heard by cats and dogs, he manipulates them into conflict and the worldwide battle between cats and dogs is BACK ON. Now, a team of inexperienced and untested agents will have to use their old-school animal instincts to restore order and peace between cats and dogs everywhere."
+    }
+    
+    
     var genre:String {
         var genreArray:[String] = []
         for genreId in movieModel?.genre_ids ?? [] {

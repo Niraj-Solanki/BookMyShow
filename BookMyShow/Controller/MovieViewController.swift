@@ -73,6 +73,7 @@ extension MovieViewController : UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
+        detailViewController.movieModel = MovieCellViewModel(movie:viewModel.items[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
