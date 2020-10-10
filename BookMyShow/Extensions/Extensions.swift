@@ -30,3 +30,14 @@ extension URLSession: URLSessionProtocol {
 extension URLSessionDataTask: URLSessionDataTaskProtocol {
     
 }
+
+extension String{
+    func convertDateFormater() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "dd, MMM yyyy"
+        return  dateFormatter.string(from: date!)
+    }
+}

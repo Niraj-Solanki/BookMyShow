@@ -21,12 +21,32 @@ class MovieCellViewModel: NSObject {
     }
     
     var releaseDate:String{
-        return movieModel?.release_date ?? "Update Soon!"
+        return movieModel?.release_date?.convertDateFormater() ?? "Update Soon!"
     }
     
     var moviePosterUrl:String {
         return "\(Constants.Service.imageBaseUrl)\(movieModel?.poster_path ?? (movieModel?.backdrop_path ?? ""))"
     }
+    
+    var genre:String {
+        var genreArray:[String] = []
+        for genreId in movieModel?.genre_ids ?? [] {
+            
+            if genreArray.count < 1 {
+                genreArray.append(contentsOf: GenreModel.shared.genreTypes.filter { $0.id == genreId }.map { $0.name })
+            }
+            else if genreArray.count < 3
+            {
+             genreArray.append(contentsOf: GenreModel.shared.genreTypes.filter { $0.id == genreId }.map { " \(Constants.StaticData.bulletSymbol) " + $0.name })
+            }
+            else{
+                return genreArray.joined()
+            }
+        }
+        
+        return genreArray.joined()
+    }
+    
     
     
     func downloadImage(completion:@escaping (UIImage?) -> Void)

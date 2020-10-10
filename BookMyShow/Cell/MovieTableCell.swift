@@ -13,12 +13,14 @@ class MovieTableCell: UITableViewCell {
     @IBOutlet weak var bookButton: UIButton!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet weak var genreLabel: UILabel!
     
-    @IBOutlet weak var dummyImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         bookButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        moviePosterImageView.layer.cornerRadius = 10
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,9 +32,11 @@ class MovieTableCell: UITableViewCell {
         layoutIfNeeded()
         movieTitleLabel.text = viewModel.movieTitle
         releaseDateLabel.text = viewModel.releaseDate
+        genreLabel.text = viewModel.genre
+        
         
         viewModel.downloadImage { (image) in
-            self.dummyImageView.image = image
+            self.moviePosterImageView.image = image
         }
     }
     

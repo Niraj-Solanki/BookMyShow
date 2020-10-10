@@ -17,34 +17,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="420" height="226"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="186" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-6J-Iov" userLabel="mainView" customClass="CardView" customModule="BookMyShow" customModuleProvider="target">
+                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="186" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-6J-Iov" userLabel="mainView">
                         <rect key="frame" x="10" y="10" width="400" height="206"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-6a-Hwn">
-                                <rect key="frame" x="150" y="20" width="240" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <rect key="frame" x="165" y="20" width="225" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" name="NG900"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-4C-Fb4">
-                                <rect key="frame" x="150" y="49" width="240" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" name="NG800"/>
+                                <rect key="frame" x="165" y="115" width="225" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" name="NG700"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTc-Ki-GUP">
-                                <rect key="frame" x="10" y="10" width="120" height="186"/>
+                                <rect key="frame" x="25" y="10" width="120" height="186"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="G7F-7v-J52"/>
                                 </constraints>
+                            </imageView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBh-be-8V3">
+                                <rect key="frame" x="165" y="48" width="40" height="2"/>
+                                <color key="backgroundColor" name="NG600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Jkc-1b-YrW"/>
+                                    <constraint firstAttribute="width" constant="40" id="ZE1-xK-h8x"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </imageView>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ts-vc-fOo">
+                                <rect key="frame" x="165" y="60" width="225" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" name="NG700"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtv-q4-GAF">
+                                <rect key="frame" x="165" y="87" width="92" height="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" name="NG800"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7w-Fx-t9h">
-                                <rect key="frame" x="220" y="156" width="180" height="40"/>
+                                <rect key="frame" x="210" y="156" width="180" height="40"/>
                                 <color key="backgroundColor" name="P500"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RSy-3X-JcJ"/>
@@ -52,7 +72,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="BOOK NOW">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" name="NG100"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -66,17 +86,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="c7w-Fx-t9h" secondAttribute="trailing" id="2jg-jD-iU3"/>
+                            <constraint firstItem="5ts-vc-fOo" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="2L2-fb-9nb"/>
+                            <constraint firstAttribute="trailing" secondItem="c7w-Fx-t9h" secondAttribute="trailing" constant="10" id="2jg-jD-iU3"/>
                             <constraint firstAttribute="trailing" secondItem="T4q-4C-Fb4" secondAttribute="trailing" constant="10" id="56O-mp-qtJ"/>
-                            <constraint firstItem="uTc-Ki-GUP" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" constant="10" id="5zI-Oe-vSh"/>
-                            <constraint firstItem="T4q-4C-Fb4" firstAttribute="top" secondItem="Ucr-6a-Hwn" secondAttribute="bottom" constant="10" id="87I-YD-yfR"/>
+                            <constraint firstItem="uTc-Ki-GUP" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" constant="25" id="5zI-Oe-vSh"/>
+                            <constraint firstItem="dtv-q4-GAF" firstAttribute="top" secondItem="5ts-vc-fOo" secondAttribute="bottom" constant="10" id="8uR-qm-uCH"/>
                             <constraint firstItem="uTc-Ki-GUP" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="10" id="9Es-0w-TxZ"/>
                             <constraint firstItem="c7w-Fx-t9h" firstAttribute="bottom" secondItem="uTc-Ki-GUP" secondAttribute="bottom" id="DP4-H1-PcG"/>
                             <constraint firstItem="Ucr-6a-Hwn" firstAttribute="leading" secondItem="uTc-Ki-GUP" secondAttribute="trailing" constant="20" id="R16-sT-SUB"/>
                             <constraint firstAttribute="bottom" secondItem="uTc-Ki-GUP" secondAttribute="bottom" constant="10" id="TWZ-qv-b9x"/>
                             <constraint firstItem="Ucr-6a-Hwn" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="20" id="ZAQ-VC-sRF"/>
+                            <constraint firstItem="T4q-4C-Fb4" firstAttribute="top" secondItem="dtv-q4-GAF" secondAttribute="bottom" constant="10" id="cCk-1u-ZIq"/>
+                            <constraint firstItem="dtv-q4-GAF" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="cSD-51-X05"/>
+                            <constraint firstItem="5ts-vc-fOo" firstAttribute="top" secondItem="gBh-be-8V3" secondAttribute="bottom" constant="10" id="dh3-QV-DkX"/>
                             <constraint firstItem="T4q-4C-Fb4" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="gsq-KB-IOF"/>
+                            <constraint firstAttribute="trailing" secondItem="5ts-vc-fOo" secondAttribute="trailing" constant="10" id="heU-5z-lhz"/>
                             <constraint firstAttribute="trailing" secondItem="Ucr-6a-Hwn" secondAttribute="trailing" constant="10" id="hqL-eZ-qT6"/>
+                            <constraint firstItem="gBh-be-8V3" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="jVa-bO-J5o"/>
+                            <constraint firstItem="gBh-be-8V3" firstAttribute="top" secondItem="Ucr-6a-Hwn" secondAttribute="bottom" constant="5" id="yFr-kP-mLs"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -90,7 +117,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bookButton" destination="c7w-Fx-t9h" id="OXX-fO-gXo"/>
-                <outlet property="dummyImageView" destination="uTc-Ki-GUP" id="Bx5-vT-NnN"/>
+                <outlet property="genreLabel" destination="5ts-vc-fOo" id="Qq8-Am-c9c"/>
+                <outlet property="moviePosterImageView" destination="uTc-Ki-GUP" id="Bx5-vT-NnN"/>
                 <outlet property="movieTitleLabel" destination="Ucr-6a-Hwn" id="yGr-Yz-5SE"/>
                 <outlet property="releaseDateLabel" destination="T4q-4C-Fb4" id="VbL-yv-RZA"/>
             </connections>
@@ -98,6 +126,15 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="NG100">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NG600">
+            <color red="0.37999999523162842" green="0.45500001311302185" blue="0.53299999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NG700">
+            <color red="0.29399999976158142" green="0.37999999523162842" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="NG800">
             <color red="0.20399999618530273" green="0.28600001335144043" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
