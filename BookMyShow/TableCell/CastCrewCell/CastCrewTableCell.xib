@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="503" placeholderIntrinsicHeight="177" translatesAutoresizingMaskIntoConstraints="NO" id="OjX-oN-opz">
-                        <rect key="frame" x="0.0" y="0.0" width="503" height="263"/>
+                        <rect key="frame" x="0.0" y="0.0" width="503" height="177"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06E-kh-jcJ">
                                 <rect key="frame" x="0.0" y="10" width="100" height="25"/>
@@ -41,7 +41,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="AXd-Dk-bo9">
-                                <rect key="frame" x="0.0" y="45" width="503" height="200"/>
+                                <rect key="frame" x="0.0" y="55" width="503" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="yg5-MC-fVb"/>
@@ -63,7 +63,7 @@
                             <constraint firstItem="06E-kh-jcJ" firstAttribute="top" secondItem="OjX-oN-opz" secondAttribute="top" constant="10" id="1Re-hk-GLv"/>
                             <constraint firstItem="06E-kh-jcJ" firstAttribute="leading" secondItem="OjX-oN-opz" secondAttribute="leading" id="ANu-Y9-HBo"/>
                             <constraint firstItem="AXd-Dk-bo9" firstAttribute="leading" secondItem="OjX-oN-opz" secondAttribute="leading" id="Lco-Tp-lFb"/>
-                            <constraint firstItem="AXd-Dk-bo9" firstAttribute="top" secondItem="06E-kh-jcJ" secondAttribute="bottom" constant="10" id="i9Z-nx-yFk"/>
+                            <constraint firstItem="AXd-Dk-bo9" firstAttribute="top" secondItem="06E-kh-jcJ" secondAttribute="bottom" constant="20" id="i9Z-nx-yFk"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AXd-Dk-bo9" secondAttribute="bottom" constant="10" id="ksA-B7-hul"/>
                             <constraint firstAttribute="trailing" secondItem="AXd-Dk-bo9" secondAttribute="trailing" id="un8-zh-wAx"/>
                         </constraints>

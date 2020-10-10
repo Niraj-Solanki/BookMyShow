@@ -27,6 +27,7 @@ class MovieDetailViewModel : NSObject {
         super.init()
         self.getMovieDetails(movieId: movieId)
         self.getMovieCredits(movieId: movieId)
+        self.getSimilarMovies(movieId: movieId)
     }
     
     //NIB
@@ -35,7 +36,7 @@ class MovieDetailViewModel : NSObject {
     }
     
     var detailCellIdentifier:String{
-      return "MovieDetailCell"
+        return "MovieDetailCell"
     }
     
     var castCrewCellNib:UINib{
@@ -43,7 +44,7 @@ class MovieDetailViewModel : NSObject {
     }
     
     var castCrewCellIdentifier:String{
-      return "CastCrewTableCell"
+        return "CastCrewTableCell"
     }
     
     var similarMovieCellNib:UINib{
@@ -51,7 +52,7 @@ class MovieDetailViewModel : NSObject {
     }
     
     var similarMovieCellIdentifier:String{
-      return "MovieDetailCell"
+        return "MovieDetailCell"
     }
     
     
@@ -60,10 +61,10 @@ class MovieDetailViewModel : NSObject {
         return cellViewModels
     }
     
-//    
+    //
     //MARK:- API Work
     private func getMovieDetails(movieId:Int) {
-
+        
         self.observerBlock?(.dataLoading)
         let httpClient = HTTPClient.init(session: URLSession.shared)
         httpClient.dataTask(MovieDB.movieDetails(movieId)) { [weak self] (result) in
@@ -90,38 +91,65 @@ class MovieDetailViewModel : NSObject {
     }
     
     private func getMovieCredits(movieId:Int) {
-
-          self.observerBlock?(.dataLoading)
+        
+        self.observerBlock?(.dataLoading)
         let httpClient = HTTPClient.init(session: URLSession.shared)
-          httpClient.dataTask(MovieDB.movieCredits(movieId)) { [weak self] (result) in
-              guard let self = self else { return }
-              
-              switch result {
-              case .success(let data):
-                  guard let data = data else { self.observerBlock?(.dataFailed); return }
-                  
-                  DispatchQueue.main.async {
+        httpClient.dataTask(MovieDB.movieCredits(movieId)) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { self.observerBlock?(.dataFailed); return }
+                
+                DispatchQueue.main.async {
                     let jsonDecoder = JSONDecoder()
                     do {
                         let creditsData = try jsonDecoder.decode(CreditsModel.self, from: data)
-                      if let cast = creditsData.cast {
-                          self.cellViewModels.append(CastCrewCellViewModel.init(castArray: cast) as AnyObject)
-                      }
-                      
-                      if let crew = creditsData.crew {
-                          self.cellViewModels.append(CastCrewCellViewModel.init(crewArray: crew) as AnyObject)
-                      }
-                      
+                        if let cast = creditsData.cast {
+                            self.cellViewModels.append(CastCrewCellViewModel.init(castArray: cast) as AnyObject)
+                        }
+                        
+                        if let crew = creditsData.crew {
+                            self.cellViewModels.append(CastCrewCellViewModel.init(crewArray: crew) as AnyObject)
+                        }
+                        
                         self.observerBlock?(.dataLoaded)
                     } catch {
                         print(error.localizedDescription)
                         self.observerBlock?(.dataFailed)
                     }
-                  }
-              case .failure(_):
-                  self.observerBlock?(.dataFailed)
-              }
-          }
-      }
+                }
+            case .failure(_):
+                self.observerBlock?(.dataFailed)
+            }
+        }
+    }
+    
+    
+    private func getSimilarMovies(movieId:Int) {
+        self.observerBlock?(.dataLoading)
+        let httpClient = HTTPClient.init(session: URLSession.shared)
+        httpClient.dataTask(MovieDB.similarMoview(movieId)) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                
+                let jsonDecoder = JSONDecoder()
+                do {
+                    let moviesData = try jsonDecoder.decode(MoviesModel.self, from: data)
+                    self.cellViewModels.append(moviesData as AnyObject)
+                    self.observerBlock?(.dataLoaded)
+                } catch {
+                    print(error.localizedDescription)
+                    self.observerBlock?(.dataFailed)
+                }
+                
+            case .failure(_):
+                self.observerBlock?(.dataFailed)
+            }
+        }
+    }
     
 }

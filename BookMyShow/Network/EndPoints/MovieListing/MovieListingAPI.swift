@@ -12,6 +12,7 @@ enum MovieDB {
     case nowPlayings(Int) // Page No
     case movieDetails(Int) // Movie ID
     case movieCredits(Int) // MovieID
+    case similarMoview(Int) // MovieID
 }
 
 extension MovieDB: RequestProtocol {
@@ -38,6 +39,8 @@ extension MovieDB: RequestProtocol {
             return "3/movie/\(movieId)"
         case .movieCredits(let movieId):
             return "3/movie/\(movieId)/credits"
+        case .similarMoview(let movieId):
+            return "3/movie/\(movieId)/similar"
         }
     }
     
@@ -54,6 +57,8 @@ extension MovieDB: RequestProtocol {
         switch self {
         case .nowPlayings(let pageNo):
             params[MovieListingKeys.page] = pageNo
+        case .similarMoview( _):
+            params[MovieListingKeys.page] = 1
         default:
             print("")
         }

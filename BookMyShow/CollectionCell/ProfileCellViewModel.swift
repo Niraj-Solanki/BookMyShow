@@ -33,25 +33,39 @@ class ProfileCellViewModel {
     
     func downloadImage(completion:@escaping (UIImage?) -> Void)
     {
-        let path = (type == .cast) ? castModel?.profile_path ?? "" :crewModel?.profile_path ?? ""
-        if let imageUrl = URL.init(string: "\(Constants.Service.imageBaseUrl)\(path)")
+        if let path = (type == .cast) ? castModel?.profile_path :crewModel?.profile_path, path.count > 0
         {
-            // Caching Images
-            if ImageCache.shared.imageExist(url: imageUrl) {
-                completion(ImageCache.shared.getImage(url: imageUrl))
+            if let imageUrl = URL.init(string: "\(Constants.Service.imageBaseUrl)\(path)")
+            {
+                // Caching Images
+                if ImageCache.shared.imageExist(url: imageUrl) {
+                    completion(ImageCache.shared.getImage(url: imageUrl))
+                }
+                else{
+                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+                        guard let data = data, error == nil else { return print("Not Available") }
+                        
+                        DispatchQueue.main.async {
+                            if let image = UIImage(data: data)
+                            {
+                                ImageCache.shared.saveImage(url: imageUrl, image: image)
+                                completion(image)
+                            }
+                            else{
+                                completion(UIImage(named: "1)") ?? nil)
+                            }
+                        }
+                    }).resume()
+                }
+            }
+        }
+        else
+        {
+            if type == .cast {
+                completion(UIImage(named: "\(castModel?.gender ?? 1)") ?? nil)
             }
             else{
-                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-                    guard let data = data, error == nil else { return print("Not Available") }
-                    
-                    DispatchQueue.main.async {
-                        if let image = UIImage(data: data)
-                        {
-                            ImageCache.shared.saveImage(url: imageUrl, image: image)
-                            completion(image)
-                        }
-                    }
-                }).resume()
+                completion(UIImage(named: "\(crewModel?.gender ?? 1)") ?? nil)
             }
         }
     }
