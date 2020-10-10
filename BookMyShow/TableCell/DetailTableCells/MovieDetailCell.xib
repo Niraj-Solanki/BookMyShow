@@ -31,20 +31,20 @@
                                         <rect key="frame" x="0.0" y="270" width="386" height="180"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-nz-bH9">
-                                                <rect key="frame" x="10" y="78.5" width="366" height="27.5"/>
+                                                <rect key="frame" x="10" y="75.5" width="366" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="21"/>
                                                 <color key="textColor" name="NG100"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMu-jC-QIj">
-                                                <rect key="frame" x="10" y="116" width="366" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <rect key="frame" x="10" y="113" width="366" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                 <color key="textColor" name="NG100"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v8-TV-LXd">
-                                                <rect key="frame" x="10" y="143" width="366" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <rect key="frame" x="10" y="141.5" width="366" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                 <color key="textColor" name="NG100"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -87,16 +87,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-lr-FFm" userLabel="releaseView">
-                                <rect key="frame" x="266" y="455" width="120" height="25"/>
+                                <rect key="frame" x="266" y="465" width="120" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpW-mt-tLp">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                        <color key="textColor" name="P700"/>
+                                        <color key="textColor" name="NG100"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="P700"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="521-0t-T83"/>
                                     <constraint firstAttribute="width" constant="120" id="Msi-It-fCX"/>
@@ -107,16 +107,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-UB-xms" userLabel="StooryLine">
-                                <rect key="frame" x="0.0" y="500" width="100" height="25"/>
+                                <rect key="frame" x="0.0" y="510" width="100" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3es-IO-LBo">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                        <color key="textColor" name="P700"/>
+                                        <color key="textColor" name="NG100"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="P700"/>
                                 <constraints>
                                     <constraint firstItem="3es-IO-LBo" firstAttribute="leading" secondItem="5ux-UB-xms" secondAttribute="leading" id="6s2-dt-J2u"/>
                                     <constraint firstAttribute="width" constant="100" id="IJI-Mu-qxP"/>
@@ -127,11 +127,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpM-lB-qwc">
-                                <rect key="frame" x="20" y="545" width="346" height="49"/>
+                                <rect key="frame" x="20" y="555" width="346" height="73"/>
                                 <string key="text">At least 2+ years’ experience in iOS App Development
 Strong Object-oriented design and programming skills in Objective-C and Swift 4.x or RxSwift</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" name="NG200"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <color key="textColor" name="NG800"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -147,11 +147,11 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                             <constraint firstItem="jpM-lB-qwc" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" constant="20" id="oAa-cA-vgT"/>
                             <constraint firstAttribute="trailing" secondItem="aTN-lr-FFm" secondAttribute="trailing" id="u1l-Gi-RXs"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jpM-lB-qwc" secondAttribute="bottom" constant="20" id="wga-qm-dDh"/>
-                            <constraint firstItem="aTN-lr-FFm" firstAttribute="top" secondItem="A1z-xe-i16" secondAttribute="bottom" constant="5" id="xUn-dD-wsG"/>
+                            <constraint firstItem="aTN-lr-FFm" firstAttribute="top" secondItem="A1z-xe-i16" secondAttribute="bottom" constant="15" id="xUn-dD-wsG"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                <color key="backgroundColor" name="NG100"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="A0t-h3-wnj" secondAttribute="trailing" id="3gF-l7-yhM"/>
                     <constraint firstItem="A0t-h3-wnj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="70C-iT-vFg"/>
@@ -178,8 +178,8 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
         <namedColor name="NG100">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="NG200">
-            <color red="0.9649999737739563" green="0.96899998188018799" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="NG800">
+            <color red="0.20399999618530273" green="0.28600001335144043" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="P700">
             <color red="0.65100002288818359" green="0.19599999487400055" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

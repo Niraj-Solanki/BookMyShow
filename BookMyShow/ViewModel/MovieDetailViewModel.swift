@@ -48,11 +48,11 @@ class MovieDetailViewModel : NSObject {
     }
     
     var similarMovieCellNib:UINib{
-        return UINib.init(nibName: "MovieDetailCell", bundle: nil)
+        return UINib.init(nibName: "SimilarMovieTableCell", bundle: nil)
     }
     
     var similarMovieCellIdentifier:String{
-        return "MovieDetailCell"
+        return "SimilarMovieTableCell"
     }
     
     
@@ -106,11 +106,21 @@ class MovieDetailViewModel : NSObject {
                     do {
                         let creditsData = try jsonDecoder.decode(CreditsModel.self, from: data)
                         if let cast = creditsData.cast {
-                            self.cellViewModels.append(CastCrewCellViewModel.init(castArray: cast) as AnyObject)
+                            if self.cellViewModels.count > 1 {
+                                self.cellViewModels.insert(CastCrewCellViewModel(castArray: cast) as AnyObject, at: 1)
+                            }
+                            else
+                            {                                self.cellViewModels.append(CastCrewCellViewModel(castArray: cast) as AnyObject)
+                            }
                         }
                         
                         if let crew = creditsData.crew {
-                            self.cellViewModels.append(CastCrewCellViewModel.init(crewArray: crew) as AnyObject)
+                            if self.cellViewModels.count > 2 {
+                                self.cellViewModels.insert(CastCrewCellViewModel(crewArray: crew) as AnyObject, at: 2)
+                            }
+                            else
+                            {                                self.cellViewModels.append(CastCrewCellViewModel(crewArray: crew) as AnyObject)
+                            }
                         }
                         
                         self.observerBlock?(.dataLoaded)
@@ -139,8 +149,10 @@ class MovieDetailViewModel : NSObject {
                 let jsonDecoder = JSONDecoder()
                 do {
                     let moviesData = try jsonDecoder.decode(MoviesModel.self, from: data)
-                    self.cellViewModels.append(moviesData as AnyObject)
-                    self.observerBlock?(.dataLoaded)
+                    if moviesData.movies?.count ?? 0 > 0 {
+                        self.cellViewModels.append(moviesData as AnyObject)
+                        self.observerBlock?(.dataLoaded)
+                    }
                 } catch {
                     print(error.localizedDescription)
                     self.observerBlock?(.dataFailed)

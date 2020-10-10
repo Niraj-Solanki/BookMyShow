@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SimilarMovieCollectionCell" id="gTV-IL-0wX" customClass="SimilarMovieCollectionCell" customModule="BookMyShow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="305"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="305"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-fy-SmS" customClass="CardView" customModule="BookMyShow" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="305"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-S1-CVW">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="YGi-is-dX4"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLZ-0A-B78" userLabel="detail">
+                                <rect key="frame" x="0.0" y="225" width="200" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aix-hh-tMU">
+                                        <rect key="frame" x="0.0" y="10" width="200" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" name="NG100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-yy-BZx">
+                                        <rect key="frame" x="0.0" y="34.5" width="200" height="17"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <color key="textColor" name="NG100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="P800"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="c8g-yy-BZx" secondAttribute="trailing" id="7ah-Qc-OZb"/>
+                                    <constraint firstItem="c8g-yy-BZx" firstAttribute="leading" secondItem="CLZ-0A-B78" secondAttribute="leading" id="Tir-Ip-yXH"/>
+                                    <constraint firstAttribute="trailing" secondItem="aix-hh-tMU" secondAttribute="trailing" id="bas-1g-EEQ"/>
+                                    <constraint firstItem="c8g-yy-BZx" firstAttribute="top" secondItem="aix-hh-tMU" secondAttribute="bottom" constant="5" id="kBO-0h-UBD"/>
+                                    <constraint firstItem="aix-hh-tMU" firstAttribute="leading" secondItem="CLZ-0A-B78" secondAttribute="leading" id="pyo-kT-cOx"/>
+                                    <constraint firstItem="aix-hh-tMU" firstAttribute="top" secondItem="CLZ-0A-B78" secondAttribute="top" constant="10" id="sVO-cu-cdY"/>
+                                    <constraint firstAttribute="height" constant="80" id="yTm-ce-peQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zaS-S1-CVW" firstAttribute="top" secondItem="Cpu-fy-SmS" secondAttribute="top" id="RXK-II-gwQ"/>
+                            <constraint firstAttribute="bottom" secondItem="CLZ-0A-B78" secondAttribute="bottom" id="Wje-MS-ht0"/>
+                            <constraint firstAttribute="trailing" secondItem="zaS-S1-CVW" secondAttribute="trailing" id="c3c-d7-415"/>
+                            <constraint firstAttribute="trailing" secondItem="CLZ-0A-B78" secondAttribute="trailing" id="pHK-MI-UcO"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zaS-S1-CVW" secondAttribute="bottom" id="snm-rq-vHa"/>
+                            <constraint firstItem="CLZ-0A-B78" firstAttribute="leading" secondItem="Cpu-fy-SmS" secondAttribute="leading" id="xdr-85-ZXU"/>
+                            <constraint firstItem="zaS-S1-CVW" firstAttribute="leading" secondItem="Cpu-fy-SmS" secondAttribute="leading" id="y2B-Ol-Yc3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Cpu-fy-SmS" secondAttribute="bottom" id="HJ0-lS-Z09"/>
+                <constraint firstAttribute="trailing" secondItem="Cpu-fy-SmS" secondAttribute="trailing" id="QD8-Dc-Ovs"/>
+                <constraint firstItem="Cpu-fy-SmS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jZD-cG-3ap"/>
+                <constraint firstItem="Cpu-fy-SmS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sac-Tz-V3C"/>
+            </constraints>
+            <size key="customSize" width="170" height="224"/>
+            <connections>
+                <outlet property="detailView" destination="CLZ-0A-B78" id="EGf-bc-y9G"/>
+                <outlet property="mainView" destination="Cpu-fy-SmS" id="zO3-WO-vA0"/>
+                <outlet property="overViewlabel" destination="c8g-yy-BZx" id="xzj-ls-2U9"/>
+                <outlet property="posterImageView" destination="zaS-S1-CVW" id="PfD-wH-NtO"/>
+                <outlet property="titleLabel" destination="aix-hh-tMU" id="0ZU-PR-dHX"/>
+            </connections>
+            <point key="canvasLocation" x="224.63768115942031" y="156.36160714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="NG100">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="P800">
+            <color red="0.54500001668930054" green="0.16500000655651093" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
