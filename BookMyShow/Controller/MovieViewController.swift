@@ -34,14 +34,12 @@ class MovieViewController: UIViewController {
                    switch state {
                    case .dataLoaded:
                        print("Data Loaded")
-//                       self?.refreshControl.endRefreshing()
                        self?.movieListTableView.reloadData()
 //                       self?.noConnectionView.isHidden = true
                        self?.viewModel.getLoader().dismiss(animated: false, completion: nil)
                        
                    case .dataFailed:
                        print("Data Failed")
-//                       self?.refreshControl.endRefreshing()
 //                       self?.noConnectionView.isHidden = false
                        self?.viewModel.getLoader().dismiss(animated: false, completion: nil)
                        
@@ -72,6 +70,12 @@ extension MovieViewController : UITableViewDelegate,UITableViewDataSource
         movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row]))
         return movieCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 218
     }

@@ -21,6 +21,7 @@ class MovieTableCell: UITableViewCell {
         // Initialization code
         bookButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         moviePosterImageView.layer.cornerRadius = 10
+        self.selectionStyle = .none
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

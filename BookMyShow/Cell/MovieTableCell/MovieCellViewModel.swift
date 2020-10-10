@@ -17,7 +17,7 @@ class MovieCellViewModel: NSObject {
     }
     
     var movieTitle:String {
-        return movieModel?.original_title ?? "Untitled"
+        return movieModel?.title ?? "Untitled"
     }
     
     var releaseDate:String{
