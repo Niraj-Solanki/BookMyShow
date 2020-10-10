@@ -7,10 +7,7 @@
 //
 
 import UIKit
-protocol MovieDetailProtocol {
-}
-
-class MovieDetailCellViewModel: MovieDetailProtocol {
+class MovieDetailCellViewModel {
     
     private var movieModel:MovieDetailedModel?
     

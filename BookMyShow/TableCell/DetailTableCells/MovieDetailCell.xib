@@ -31,8 +31,8 @@
                                         <rect key="frame" x="0.0" y="270" width="386" height="180"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-nz-bH9">
-                                                <rect key="frame" x="10" y="82" width="366" height="24"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                <rect key="frame" x="10" y="78.5" width="366" height="27.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="21"/>
                                                 <color key="textColor" name="NG100"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -87,11 +87,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-lr-FFm" userLabel="releaseView">
-                                <rect key="frame" x="286" y="455" width="100" height="25"/>
+                                <rect key="frame" x="266" y="455" width="120" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpW-mt-tLp">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" name="P700"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -99,21 +99,35 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="521-0t-T83"/>
-                                    <constraint firstAttribute="width" constant="100" id="Msi-It-fCX"/>
+                                    <constraint firstAttribute="width" constant="120" id="Msi-It-fCX"/>
                                     <constraint firstItem="MpW-mt-tLp" firstAttribute="top" secondItem="aTN-lr-FFm" secondAttribute="top" id="Rbz-cF-Fmm"/>
                                     <constraint firstItem="MpW-mt-tLp" firstAttribute="leading" secondItem="aTN-lr-FFm" secondAttribute="leading" id="UFz-Bp-RrP"/>
                                     <constraint firstAttribute="trailing" secondItem="MpW-mt-tLp" secondAttribute="trailing" id="YOR-a4-UWQ"/>
                                     <constraint firstAttribute="bottom" secondItem="MpW-mt-tLp" secondAttribute="bottom" id="f52-nK-Ce3"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3es-IO-LBo">
-                                <rect key="frame" x="20" y="500" width="346" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" name="NG100"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-UB-xms" userLabel="StooryLine">
+                                <rect key="frame" x="0.0" y="500" width="100" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3es-IO-LBo">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" name="P700"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="3es-IO-LBo" firstAttribute="leading" secondItem="5ux-UB-xms" secondAttribute="leading" id="6s2-dt-J2u"/>
+                                    <constraint firstAttribute="width" constant="100" id="IJI-Mu-qxP"/>
+                                    <constraint firstAttribute="height" constant="25" id="PJU-op-ikw"/>
+                                    <constraint firstAttribute="bottom" secondItem="3es-IO-LBo" secondAttribute="bottom" id="WOb-ur-n7g"/>
+                                    <constraint firstItem="3es-IO-LBo" firstAttribute="top" secondItem="5ux-UB-xms" secondAttribute="top" id="Yz4-2e-wW7"/>
+                                    <constraint firstAttribute="trailing" secondItem="3es-IO-LBo" secondAttribute="trailing" id="ajy-8A-gf9"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpM-lB-qwc">
-                                <rect key="frame" x="20" y="529" width="346" height="49"/>
+                                <rect key="frame" x="20" y="545" width="346" height="49"/>
                                 <string key="text">At least 2+ years’ experience in iOS App Development
 Strong Object-oriented design and programming skills in Objective-C and Swift 4.x or RxSwift</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -125,11 +139,10 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                         <constraints>
                             <constraint firstItem="A1z-xe-i16" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" id="1Mh-jM-k6E"/>
                             <constraint firstItem="A1z-xe-i16" firstAttribute="top" secondItem="A0t-h3-wnj" secondAttribute="top" id="9vk-y7-3VQ"/>
-                            <constraint firstItem="3es-IO-LBo" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" constant="20" id="Cct-hX-xAX"/>
-                            <constraint firstItem="jpM-lB-qwc" firstAttribute="top" secondItem="3es-IO-LBo" secondAttribute="bottom" constant="10" id="DW6-bm-NcC"/>
-                            <constraint firstItem="3es-IO-LBo" firstAttribute="top" secondItem="aTN-lr-FFm" secondAttribute="bottom" constant="20" id="Nor-xC-17M"/>
+                            <constraint firstItem="5ux-UB-xms" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" id="IPQ-Sw-Tc9"/>
+                            <constraint firstItem="jpM-lB-qwc" firstAttribute="top" secondItem="5ux-UB-xms" secondAttribute="bottom" constant="20" id="M7d-24-5sS"/>
                             <constraint firstAttribute="trailing" secondItem="A1z-xe-i16" secondAttribute="trailing" id="WCO-em-yKU"/>
-                            <constraint firstAttribute="trailing" secondItem="3es-IO-LBo" secondAttribute="trailing" constant="20" id="iZb-VK-1zc"/>
+                            <constraint firstItem="5ux-UB-xms" firstAttribute="top" secondItem="aTN-lr-FFm" secondAttribute="bottom" constant="20" id="ivy-9x-hmf"/>
                             <constraint firstAttribute="trailing" secondItem="jpM-lB-qwc" secondAttribute="trailing" constant="20" id="kDO-W7-iyO"/>
                             <constraint firstItem="jpM-lB-qwc" firstAttribute="leading" secondItem="A0t-h3-wnj" secondAttribute="leading" constant="20" id="oAa-cA-vgT"/>
                             <constraint firstAttribute="trailing" secondItem="aTN-lr-FFm" secondAttribute="trailing" id="u1l-Gi-RXs"/>
@@ -156,6 +169,7 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                 <outlet property="releaseView" destination="aTN-lr-FFm" id="C88-RD-CWO"/>
                 <outlet property="rreleaseDateLabel" destination="MpW-mt-tLp" id="I3P-kE-6lZ"/>
                 <outlet property="storyLineLabel" destination="jpM-lB-qwc" id="uJX-e9-zrT"/>
+                <outlet property="storyLineView" destination="5ux-UB-xms" id="nau-W1-CiO"/>
             </connections>
             <point key="canvasLocation" x="184.05797101449278" y="337.16517857142856"/>
         </tableViewCell>

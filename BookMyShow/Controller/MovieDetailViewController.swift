@@ -9,7 +9,7 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var movieDetailTableView: UITableView!
     
@@ -25,9 +25,11 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: - Custom Methods
     func initializeVariables() {
-        movieDetailTableView.register(viewModel.detailCellNib, forCellReuseIdentifier: viewModel.reusableIdentifier)
+        
+        movieDetailTableView.register(viewModel.detailCellNib, forCellReuseIdentifier: viewModel.detailCellIdentifier)
+        movieDetailTableView.register(viewModel.castCrewCellNib, forCellReuseIdentifier: viewModel.castCrewCellIdentifier)
         bindingWork()
-       }
+    }
     
     func configureViewModel(movieID:Int) {
         viewModel = MovieDetailViewModel.init(movieId: movieID)
@@ -65,16 +67,23 @@ extension MovieDetailViewController : UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // Movie Synopsis
         if let movieDetailModel = viewModel.items[indexPath.row] as? MovieDetailedModel {
-            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableIdentifier, for: indexPath) as! MovieDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.detailCellIdentifier, for: indexPath) as! MovieDetailCell
             cell.configureCell(viewModel: MovieDetailCellViewModel.init(movie: movieDetailModel))
             return cell
         }
-        else{
-             let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableIdentifier, for: indexPath) as! MovieDetailCell
+        
+        // Cast Cell
+        if let viewModelData = viewModel.items[indexPath.row] as? CastCrewCellViewModel {
+            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.castCrewCellIdentifier, for: indexPath) as! CastCrewTableCell
+            cell.configureCell(viewModelData)
             return cell
         }
-    }
-    
-    
+            
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.detailCellIdentifier, for: indexPath) as! MovieDetailCell
+            return cell
+        }
+    }    
 }

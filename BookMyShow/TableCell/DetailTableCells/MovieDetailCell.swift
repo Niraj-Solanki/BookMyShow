@@ -18,6 +18,7 @@ class MovieDetailCell: UITableViewCell {
     @IBOutlet weak var storyLineLabel: UILabel!
     @IBOutlet weak var rreleaseDateLabel: UILabel!
     
+    @IBOutlet weak var storyLineView: UIView!
     @IBOutlet weak var releaseView: UIView!
     @IBOutlet weak var movieGradientView: UIView!
     //MARK:- LifeCycle
@@ -31,6 +32,8 @@ class MovieDetailCell: UITableViewCell {
         
         releaseView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         releaseView.layer.cornerRadius = 12.5
+        storyLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        storyLineView.layer.cornerRadius = 12.5
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: movieGradientView.frame.size.height)

@@ -22,7 +22,7 @@ class HTTPClient {
     typealias CompletionResult = (Result<Data?, BMSError>) -> Void
     
     // MARK: - Shared Instance
-    static let shared = HTTPClient(session: URLSession.shared)
+//    static let shared = HTTPClient(session: URLSession.shared)
     
     // MARK: - Private Properties
     private let session: URLSessionProtocol

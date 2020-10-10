@@ -11,6 +11,7 @@ import Foundation
 enum MovieDB {
     case nowPlayings(Int) // Page No
     case movieDetails(Int) // Movie ID
+    case movieCredits(Int) // MovieID
 }
 
 extension MovieDB: RequestProtocol {
@@ -35,6 +36,8 @@ extension MovieDB: RequestProtocol {
             return "3/movie/now_playing"
         case .movieDetails(let movieId):
             return "3/movie/\(movieId)"
+        case .movieCredits(let movieId):
+            return "3/movie/\(movieId)/credits"
         }
     }
     
