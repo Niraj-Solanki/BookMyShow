@@ -17,11 +17,7 @@ enum MovieObserverEnum {
 class MovieViewModel : NSObject {
     
     var observerBlock:((_ observerType:MovieObserverEnum)->Void)?
-    private var moviesModel:MoviesModel? = nil {
-        didSet{
-            observerBlock?(.dataLoaded)
-        }
-    }
+    private var moviesModel:MoviesModel?
     
     private var isApiRunning = false
     private let loaderAlert = UIAlertController(title: nil, message: "Fetching Data...", preferredStyle: .alert)
@@ -29,49 +25,54 @@ class MovieViewModel : NSObject {
     override init() {
         super.init()
         self.initializeLoader()
-        self.getMoviesList()
+        self.getMoviesList(pageNo: currentPage + 1)
     }
     
     var nib:UINib{
-        return UINib.init(nibName: "RepoTableCell", bundle: nil)
+        return UINib.init(nibName: "MovieTableCell", bundle: nil)
     }
     
     var reusableIdentifier:String{
-        return "RepoTableCell"
+        return "MovieTableCell"
     }
     
     var items:[Movie] {
         return moviesModel?.movies ?? []
     }
     
-    var refreshTitle:NSAttributedString {
-        return NSAttributedString(string: "Pull to refresh")
+    var currentPage:Int{
+        return moviesModel?.page ?? 0
     }
     
-   private func initializeLoader() {
+    var totalPages:Int{
+        return moviesModel?.total_pages ?? 0
+    }
+    
+    private func initializeLoader() {
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-               loadingIndicator.hidesWhenStopped = true
-               loadingIndicator.style = UIActivityIndicatorView.Style.medium
-               loadingIndicator.startAnimating();
-               loaderAlert.view.addSubview(loadingIndicator)
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        loaderAlert.view.addSubview(loadingIndicator)
     }
     
     func getLoader() -> UIAlertController {
         return loaderAlert
     }
     
-    //MARK:- API Work
-   private func getMoviesList() {
-    if isApiRunning {
-        return
+    func loadMore() {
+        getMoviesList(pageNo: currentPage + 1)
     }
-     self.observerBlock?(.dataLoading)
-    HTTPClient.shared.dataTask(MovieListing.nowPlayings(1)) { [weak self] (result) in
+    
+    //MARK:- API Work
+    private func getMoviesList(pageNo:Int) {
+        if isApiRunning {
+            return
+        }
+        self.observerBlock?(.dataLoading)
+        HTTPClient.shared.dataTask(MovieListing.nowPlayings(pageNo)) { [weak self] (result) in
             self?.isApiRunning = false
-        
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .success(let data):
@@ -80,7 +81,14 @@ class MovieViewModel : NSObject {
                 let jsonDecoder = JSONDecoder()
                 do {
                     let moviesData = try jsonDecoder.decode(MoviesModel.self, from: data)
-                    self.moviesModel = moviesData
+                    if moviesData.page ?? 1 == 1 {
+                        self.moviesModel = moviesData
+                    }
+                    else{
+                        self.moviesModel?.movies?.append(contentsOf: moviesData.movies ?? [])
+                        self.moviesModel?.page = moviesData.page
+                    }
+                    self.observerBlock?(.dataLoaded)
                 } catch {
                     print(error.localizedDescription)
                     self.observerBlock?(.dataFailed)
@@ -91,4 +99,5 @@ class MovieViewModel : NSObject {
             }
         }
     }
+    
 }

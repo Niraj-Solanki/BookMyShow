@@ -8,8 +8,8 @@
 
 import UIKit
 struct MoviesModel : Decodable {
-    let movies : [Movie]?
-    let page : Int?
+    var movies : [Movie]?
+    var page : Int?
     let total_results : Int?
     let total_pages : Int?
 

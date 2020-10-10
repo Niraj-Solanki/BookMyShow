@@ -24,7 +24,7 @@ class MovieViewController: UIViewController {
     
     //MARK:- Custom Methods
     func initializeVariables() {
-        movieListTableView.register(UINib.init(nibName: "MovieTableCell", bundle: nil), forCellReuseIdentifier: "MovieTableCell")
+        movieListTableView.register(viewModel.nib, forCellReuseIdentifier: viewModel.reusableIdentifier)
         bindingWork()
     }
     
@@ -47,10 +47,10 @@ class MovieViewController: UIViewController {
                        
                    case .dataLoading:
                        print("Data Loading")
-                       if let loader = self?.viewModel.getLoader()
-                       {
-                           self?.present(loader, animated: false, completion: nil)
-                       }
+//                       if let loader = self?.viewModel.getLoader()
+//                       {
+//                           self?.present(loader, animated: false, completion: nil)
+//                       }
                    default:
                        print("Default")
                    }
@@ -69,6 +69,27 @@ extension MovieViewController : UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieTableCell", for: indexPath) as! MovieTableCell
+        movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row]))
         return movieCell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 218
+    }
+}
+
+extension MovieViewController : UIScrollViewDelegate
+{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let scrollViewHeight = scrollView.frame.size.height
+        let scrollOffset = scrollView.contentOffset.y
+        let scrollContentSizeHeight = scrollView.contentSize.height
+        
+        //Pagination when 3 item left to view
+        let contentHeight = 186 * 3
+        if (scrollOffset + scrollViewHeight >= (scrollContentSizeHeight - CGFloat(contentHeight))) && (viewModel.currentPage < viewModel.totalPages)
+        {
+            viewModel.loadMore()
+        }
     }
 }

@@ -3,79 +3,109 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableCell" rowHeight="206" id="KGk-i7-Jjw" customClass="MovieTableCell" customModule="BookMyShow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="206"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableCell" rowHeight="218" id="KGk-i7-Jjw" customClass="MovieTableCell" customModule="BookMyShow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="226"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="206"/>
+                <rect key="frame" x="0.0" y="0.0" width="420" height="226"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="196" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-6J-Iov" userLabel="mainView" customClass="CardView" customModule="BookMyShow" customModuleProvider="target">
-                        <rect key="frame" x="10" y="5" width="375" height="196"/>
+                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="186" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-6J-Iov" userLabel="mainView" customClass="CardView" customModule="BookMyShow" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="400" height="206"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-8I-M2W">
-                                <rect key="frame" x="10" y="10" width="80" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="bhe-O7-n1W"/>
-                                    <constraint firstAttribute="width" constant="80" id="tIs-Ej-qzZ"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-6a-Hwn">
-                                <rect key="frame" x="110" y="15" width="255" height="19"/>
+                                <rect key="frame" x="150" y="20" width="240" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="NG900"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-4C-Fb4">
-                                <rect key="frame" x="110" y="44" width="255" height="19"/>
+                                <rect key="frame" x="150" y="49" width="240" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="NG800"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTc-Ki-GUP">
+                                <rect key="frame" x="10" y="10" width="120" height="186"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="G7F-7v-J52"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7w-Fx-t9h">
-                                <rect key="frame" x="0.0" y="140" width="375" height="40"/>
-                                <color key="backgroundColor" red="0.84705882352941175" green="0.27450980392156865" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="220" y="156" width="180" height="40"/>
+                                <color key="backgroundColor" name="P500"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RSy-3X-JcJ"/>
+                                    <constraint firstAttribute="width" constant="180" id="jh9-11-bMn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="BOOK NOW">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="bookButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nbi-Hn-8Sk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xQ4-8I-M2W" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" constant="10" id="264-g7-lDg"/>
+                            <constraint firstAttribute="trailing" secondItem="c7w-Fx-t9h" secondAttribute="trailing" id="2jg-jD-iU3"/>
                             <constraint firstAttribute="trailing" secondItem="T4q-4C-Fb4" secondAttribute="trailing" constant="10" id="56O-mp-qtJ"/>
+                            <constraint firstItem="uTc-Ki-GUP" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" constant="10" id="5zI-Oe-vSh"/>
                             <constraint firstItem="T4q-4C-Fb4" firstAttribute="top" secondItem="Ucr-6a-Hwn" secondAttribute="bottom" constant="10" id="87I-YD-yfR"/>
-                            <constraint firstItem="c7w-Fx-t9h" firstAttribute="top" secondItem="xQ4-8I-M2W" secondAttribute="bottom" constant="10" id="Bnn-K3-CEr"/>
-                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="top" secondItem="xQ4-8I-M2W" secondAttribute="top" constant="5" id="K3M-md-XA6"/>
-                            <constraint firstItem="xQ4-8I-M2W" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="10" id="Mp9-bp-GTy"/>
-                            <constraint firstItem="c7w-Fx-t9h" firstAttribute="leading" secondItem="xlM-6J-Iov" secondAttribute="leading" id="VYH-TO-QhX"/>
-                            <constraint firstAttribute="bottom" secondItem="c7w-Fx-t9h" secondAttribute="bottom" id="Wb3-Vu-Upb"/>
-                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="leading" secondItem="xQ4-8I-M2W" secondAttribute="trailing" constant="20" id="XWd-LC-agl"/>
+                            <constraint firstItem="uTc-Ki-GUP" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="10" id="9Es-0w-TxZ"/>
+                            <constraint firstItem="c7w-Fx-t9h" firstAttribute="bottom" secondItem="uTc-Ki-GUP" secondAttribute="bottom" id="DP4-H1-PcG"/>
+                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="leading" secondItem="uTc-Ki-GUP" secondAttribute="trailing" constant="20" id="R16-sT-SUB"/>
+                            <constraint firstAttribute="bottom" secondItem="uTc-Ki-GUP" secondAttribute="bottom" constant="10" id="TWZ-qv-b9x"/>
+                            <constraint firstItem="Ucr-6a-Hwn" firstAttribute="top" secondItem="xlM-6J-Iov" secondAttribute="top" constant="20" id="ZAQ-VC-sRF"/>
                             <constraint firstItem="T4q-4C-Fb4" firstAttribute="leading" secondItem="Ucr-6a-Hwn" secondAttribute="leading" id="gsq-KB-IOF"/>
                             <constraint firstAttribute="trailing" secondItem="Ucr-6a-Hwn" secondAttribute="trailing" constant="10" id="hqL-eZ-qT6"/>
-                            <constraint firstAttribute="trailing" secondItem="c7w-Fx-t9h" secondAttribute="trailing" id="ynF-Ms-9WQ"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="xlM-6J-Iov" secondAttribute="bottom" constant="5" id="Fmh-3H-kRb"/>
+                    <constraint firstAttribute="bottom" secondItem="xlM-6J-Iov" secondAttribute="bottom" constant="10" id="Fmh-3H-kRb"/>
                     <constraint firstItem="xlM-6J-Iov" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="T7H-GC-io1"/>
                     <constraint firstAttribute="trailing" secondItem="xlM-6J-Iov" secondAttribute="trailing" constant="10" id="XRm-ey-57X"/>
-                    <constraint firstItem="xlM-6J-Iov" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="tgV-7j-Bwd"/>
+                    <constraint firstItem="xlM-6J-Iov" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tgV-7j-Bwd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="192.0289855072464" y="204.91071428571428"/>
+            <connections>
+                <outlet property="bookButton" destination="c7w-Fx-t9h" id="OXX-fO-gXo"/>
+                <outlet property="dummyImageView" destination="uTc-Ki-GUP" id="Bx5-vT-NnN"/>
+                <outlet property="movieTitleLabel" destination="Ucr-6a-Hwn" id="yGr-Yz-5SE"/>
+                <outlet property="releaseDateLabel" destination="T4q-4C-Fb4" id="VbL-yv-RZA"/>
+            </connections>
+            <point key="canvasLocation" x="210.1449275362319" y="211.60714285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="NG800">
+            <color red="0.20399999618530273" green="0.28600001335144043" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NG900">
+            <color red="0.14100000262260437" green="0.21199999749660492" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="P500">
+            <color red="0.84700000286102295" green="0.27500000596046448" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
