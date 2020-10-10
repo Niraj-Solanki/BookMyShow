@@ -18,18 +18,21 @@ enum MovieDetailObserverEnum {
 class MovieDetailViewModel : NSObject {
     
     var observerBlock:((_ observerType:MovieDetailObserverEnum)->Void)?
-    private var moviesModel:MoviesModel?
+    private var movieDetailedModel:MovieDetailedModel?
+    private var cellViewModels:[AnyObject] = [AnyObject]()
     
     private var isApiRunning = false
     private let loaderAlert = UIAlertController(title: nil, message: "Fetching Data...", preferredStyle: .alert)
     
     override init() {
-        super.init()
-        self.initializeLoader()
-        self.getMoviesDetails()
     }
     
-    var nib:UINib{
+    init(movieId:Int) {
+        super.init()
+        self.getMovieDetails(movieId: movieId)
+    }
+    
+    var detailCellNib:UINib{
         return UINib.init(nibName: "MovieDetailCell", bundle: nil)
     }
     
@@ -37,66 +40,36 @@ class MovieDetailViewModel : NSObject {
         return "MovieDetailCell"
     }
     
-    var items:[Movie] {
-        return moviesModel?.movies ?? []
+    var items:[AnyObject] {
+        return cellViewModels
     }
     
-    var currentPage:Int{
-        return moviesModel?.page ?? 0
-    }
-    
-    var totalPages:Int{
-        return moviesModel?.total_pages ?? 0
-    }
-    
-    private func initializeLoader() {
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.medium
-        loadingIndicator.startAnimating();
-        loaderAlert.view.addSubview(loadingIndicator)
-    }
-    
-    func getLoader() -> UIAlertController {
-        return loaderAlert
-    }
-    
-    
-    
+//    
     //MARK:- API Work
-    private func getMoviesDetails() {
-        if isApiRunning {
-            return
+    private func getMovieDetails(movieId:Int) {
+
+        self.observerBlock?(.dataLoading)
+        HTTPClient.shared.dataTask(MovieDB.movieDetails(movieId)) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { self.observerBlock?(.dataFailed); return }
+                
+                let jsonDecoder = JSONDecoder()
+                do {
+                    self.movieDetailedModel = try jsonDecoder.decode(MovieDetailedModel.self, from: data)
+                    self.cellViewModels.append(self.movieDetailedModel as AnyObject)
+                    self.observerBlock?(.dataLoaded)
+                } catch {
+                    print(error.localizedDescription)
+                    self.observerBlock?(.dataFailed)
+                }
+                
+            case .failure(_):
+                self.observerBlock?(.dataFailed)
+            }
         }
-//        self.observerBlock?(.dataLoading)
-//        HTTPClient.shared.dataTask(MovieListing.nowPlayings(pageNo)) { [weak self] (result) in
-//            self?.isApiRunning = false
-//            guard let self = self else { return }
-//            
-//            switch result {
-//            case .success(let data):
-//                guard let data = data else { self.observerBlock?(.dataFailed); return }
-//                
-//                let jsonDecoder = JSONDecoder()
-//                do {
-//                    let moviesData = try jsonDecoder.decode(MoviesModel.self, from: data)
-//                    if moviesData.page ?? 1 == 1 {
-//                        self.moviesModel = moviesData
-//                    }
-//                    else{
-//                        self.moviesModel?.movies?.append(contentsOf: moviesData.movies ?? [])
-//                        self.moviesModel?.page = moviesData.page
-//                    }
-//                    self.observerBlock?(.dataLoaded)
-//                } catch {
-//                    print(error.localizedDescription)
-//                    self.observerBlock?(.dataFailed)
-//                }
-//                
-//            case .failure(_):
-//                self.observerBlock?(.dataFailed)
-//            }
-//        }
     }
     
 }

@@ -70,7 +70,7 @@ class MovieViewModel : NSObject {
             return
         }
         self.observerBlock?(.dataLoading)
-        HTTPClient.shared.dataTask(MovieListing.nowPlayings(pageNo)) { [weak self] (result) in
+        HTTPClient.shared.dataTask(MovieDB.nowPlayings(pageNo)) { [weak self] (result) in
             self?.isApiRunning = false
             guard let self = self else { return }
             

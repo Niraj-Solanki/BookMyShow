@@ -15,6 +15,7 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: - Objects
     var movieModel:MovieCellViewModel!
+    var viewModel:MovieDetailViewModel = MovieDetailViewModel()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -24,8 +25,31 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: - Custom Methods
     func initializeVariables() {
-           movieDetailTableView.register(UINib.init(nibName: "MovieDetailCell", bundle: nil), forCellReuseIdentifier: "MovieDetailCell")
+        movieDetailTableView.register(viewModel.detailCellNib, forCellReuseIdentifier: viewModel.reusableIdentifier)
+        bindingWork()
        }
+    
+    func configureViewModel(movieID:Int) {
+        viewModel = MovieDetailViewModel.init(movieId: movieID)
+    }
+    
+    func bindingWork() {
+        viewModel.observerBlock = { [weak self] (state) in
+            DispatchQueue.main.async {
+                switch state {
+                case .dataLoaded:
+                    print("Data Loaded")
+                    self?.movieDetailTableView.reloadData()
+                case .dataFailed:
+                    print("Data Failed")
+                case .dataLoading:
+                    print("Data Loading")
+                default:
+                    print("Default")
+                }
+            }
+        }
+    }
     
     // MARK: - Action Methods
     @IBAction func backAction(_ sender: Any) {
@@ -36,13 +60,20 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController : UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return viewModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieDetailCell.self), for: indexPath) as! MovieDetailCell
-        cell.configureCell(movie: movieModel)
-        return cell
+        
+        if let movieDetailModel = viewModel.items[indexPath.row] as? MovieDetailedModel {
+            let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableIdentifier, for: indexPath) as! MovieDetailCell
+            cell.configureCell(viewModel: MovieDetailCellViewModel.init(movie: movieDetailModel))
+            return cell
+        }
+        else{
+             let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableIdentifier, for: indexPath) as! MovieDetailCell
+            return cell
+        }
     }
     
     

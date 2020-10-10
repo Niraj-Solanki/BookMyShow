@@ -8,11 +8,12 @@
 
 import Foundation
 
-enum MovieListing {
+enum MovieDB {
     case nowPlayings(Int) // Page No
+    case movieDetails(Int) // Movie ID
 }
 
-extension MovieListing: RequestProtocol {
+extension MovieDB: RequestProtocol {
    
     
     struct MovieListingKeys {
@@ -29,15 +30,17 @@ extension MovieListing: RequestProtocol {
     }
     
     var path: String {
+        switch self {
+        case .nowPlayings( _):
             return "3/movie/now_playing"
+        case .movieDetails(let movieId):
+            return "3/movie/\(movieId)"
+        }
     }
     
     //Returns HTTP Method for Movie Listing APIs
     var httpMethod: HTTPMethod {
-        switch self {
-        case .nowPlayings:
             return .get
-        }
     }
     
     //Encode and Returns Encoded Data
@@ -48,6 +51,8 @@ extension MovieListing: RequestProtocol {
         switch self {
         case .nowPlayings(let pageNo):
             params[MovieListingKeys.page] = pageNo
+        default:
+            print("")
         }
         
         return params
