@@ -13,11 +13,9 @@ class SearchViewController: UIViewController, UINavigationControllerDelegate{
     //MARK:- Outlets
     @IBOutlet weak var movieListTableView: UITableView!
     
-    
     //MARK:- Objects
     let search = UISearchController(searchResultsController: nil)
     let viewModel:SearchViewModel = SearchViewModel()
-    
     
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -32,6 +30,7 @@ class SearchViewController: UIViewController, UINavigationControllerDelegate{
         initializeSearchController()
         navigationController?.delegate = self
         movieListTableView.register(viewModel.nib, forCellReuseIdentifier: viewModel.reusableIdentifier)
+        movieListTableView.register(viewModel.headerNib, forHeaderFooterViewReuseIdentifier: viewModel.reuseableHeaderIdentifier)
         bindingWork()
        }
     
@@ -41,6 +40,7 @@ class SearchViewController: UIViewController, UINavigationControllerDelegate{
           search.automaticallyShowsCancelButton = true
           search.hidesNavigationBarDuringPresentation = false
           search.searchBar.placeholder = "Type something here to search"
+          search.searchBar.delegate = self
           navigationItem.searchController = search
       }
     
@@ -60,13 +60,22 @@ class SearchViewController: UIViewController, UINavigationControllerDelegate{
 
 
 //MARK:- UISearchBarDelegate
-extension SearchViewController : UISearchResultsUpdating
+extension SearchViewController : UISearchResultsUpdating,UISearchBarDelegate
 {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         movieListTableView.endUpdates()
         viewModel.updateSearch(text: text)
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        viewModel.isSearchBarHighlited = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.isSearchBarHighlited = false
+    }
+    
 }
 
 
@@ -92,6 +101,11 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Add in Recent Search Data only and only when user is searched annything.
+        if (search.searchBar.text ?? "").count > 0 {
+            RecentSearchDataManager.shared.updateRecentSearch(newSearch: viewModel.items[indexPath.row])
+        }
+        
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
         detailViewController.configureViewModel(movieID: viewModel.items[indexPath.row].id ?? 0)
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -99,6 +113,14 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 218
+    }
+    
+   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     return SearchHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 60))
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return viewModel.headerHeight
     }
 }
 

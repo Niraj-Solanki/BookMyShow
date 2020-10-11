@@ -34,7 +34,7 @@ class SearchViewControllerUnitTest: XCTestCase {
                 print("")
             }
         }
-        self.searchViewController.search.searchBar.text = "demo"
+        self.searchViewController.search.searchBar.text = "demo "
         searchViewController.viewModel.updateSearch(text: self.searchViewController.search.searchBar.text ?? "")
     }
 }

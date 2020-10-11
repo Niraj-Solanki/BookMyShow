@@ -21,6 +21,7 @@ class SearchViewModel : NSObject {
     var observerBlock:((_ observerType:SearchObserverEnum)->Void)?
     private var moviesModel:MoviesModel?
     private var isApiRunning = false
+    var isSearchBarHighlited = false
     private var lastSearchPage = 0
     
     private var movieItems:[Movie]? {
@@ -48,8 +49,33 @@ class SearchViewModel : NSObject {
         return "MovieTableCell"
     }
     
+    var headerNib:UINib{
+        return UINib.init(nibName: "SearchHeaderView", bundle: nil)
+    }
+    
+    var reuseableHeaderIdentifier:String{
+        return "SearchHeaderView"
+    }
+    
+    var headerHeight:CGFloat{
+        if !isSearchBarHighlited && RecentSearchDataManager.shared.getRecentSearch().count > 0 {
+            return 60
+        }
+        return 0
+    }
+    
+    
+    
     var items:[Movie] {
-        return movieItems ?? []
+        // If searrchbar is highlighted return filtered movies ootherwise return recent search
+        if !isSearchBarHighlited && RecentSearchDataManager.shared.getRecentSearch().count > 0{
+            return RecentSearchDataManager.shared.getRecentSearch()
+        }
+        else
+        {
+            return movieItems ?? []
+        }
+        
     }
     
     var currentPage:Int{
