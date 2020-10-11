@@ -49,6 +49,9 @@
 		493E804B253274DA00678905 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E804A253274DA00678905 /* WebKit.framework */; };
 		493E804D2532EFDF00678905 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E804C2532EFDF00678905 /* SearchViewController.swift */; };
 		493E804F253311DE00678905 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E804E253311DE00678905 /* SearchViewModel.swift */; };
+		493E80532533531300678905 /* MovieViewControllerUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E80522533531300678905 /* MovieViewControllerUnitTest.swift */; };
+		493E80552533582000678905 /* MovieDetailControllerUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E80542533582000678905 /* MovieDetailControllerUnitTest.swift */; };
+		493E80572533594500678905 /* SearchViewControllerUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E80562533594500678905 /* SearchViewControllerUnitTest.swift */; };
 		4976BC222530AB1000DDB821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976BC212530AB1000DDB821 /* AppDelegate.swift */; };
 		4976BC242530AB1000DDB821 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976BC232530AB1000DDB821 /* SceneDelegate.swift */; };
 		4976BC292530AB1000DDB821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4976BC272530AB1000DDB821 /* Main.storyboard */; };
@@ -110,6 +113,9 @@
 		493E804A253274DA00678905 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		493E804C2532EFDF00678905 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		493E804E253311DE00678905 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		493E80522533531300678905 /* MovieViewControllerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewControllerUnitTest.swift; sourceTree = "<group>"; };
+		493E80542533582000678905 /* MovieDetailControllerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailControllerUnitTest.swift; sourceTree = "<group>"; };
+		493E80562533594500678905 /* SearchViewControllerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerUnitTest.swift; sourceTree = "<group>"; };
 		4976BC1E2530AB1000DDB821 /* BookMyShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookMyShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4976BC212530AB1000DDB821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4976BC232530AB1000DDB821 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -316,6 +322,9 @@
 			children = (
 				4976BC382530AB1200DDB821 /* BookMyShowTests.swift */,
 				4976BC3A2530AB1200DDB821 /* Info.plist */,
+				493E80522533531300678905 /* MovieViewControllerUnitTest.swift */,
+				493E80542533582000678905 /* MovieDetailControllerUnitTest.swift */,
+				493E80562533594500678905 /* SearchViewControllerUnitTest.swift */,
 			);
 			path = BookMyShowTests;
 			sourceTree = "<group>";
@@ -535,6 +544,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4976BC392530AB1200DDB821 /* BookMyShowTests.swift in Sources */,
+				493E80552533582000678905 /* MovieDetailControllerUnitTest.swift in Sources */,
+				493E80572533594500678905 /* SearchViewControllerUnitTest.swift in Sources */,
+				493E80532533531300678905 /* MovieViewControllerUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
