@@ -21,12 +21,12 @@ class ProfileCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configureCell(viewModel:ProfileCellViewModel) {
+    func configureCell(viewModel:ProfileCellViewModel,completion:@escaping ((UIImage?) ->Void)) {
         userNameLabel.text = viewModel.userName
         userAliasLabel.text = viewModel.aliasName
         userImageView.image = nil
-        viewModel.downloadImage { [weak self] (image) in
-            self?.userImageView.image = image
+        viewModel.downloadImage {(image) in
+             completion(image)
         }
     }
     

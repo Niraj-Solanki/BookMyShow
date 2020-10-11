@@ -20,13 +20,13 @@ class SimilarMovieCollectionCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configureCell(viewModel:MovieCellViewModel) {
+    func configureCell(viewModel:MovieCellViewModel,completion:@escaping ((UIImage?) ->Void)) {
         titleLabel.text = viewModel.movieTitle
         overViewlabel.text = viewModel.releaseDate
         self.posterImageView.image = nil
         
-        viewModel.downloadImage { [weak self] (image) in
-            self?.posterImageView.image = image
+        viewModel.downloadImage { (image) in
+            completion(image)
         }
     }
 }

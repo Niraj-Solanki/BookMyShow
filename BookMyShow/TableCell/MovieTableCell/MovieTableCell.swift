@@ -29,15 +29,15 @@ class MovieTableCell: UITableViewCell {
         // Configure the view for the selected state
     } 
     
-    func configureCell(viewModel:MovieCellViewModel){
+    func configureCell(viewModel:MovieCellViewModel,completion:@escaping ((UIImage?) ->Void)){
         layoutIfNeeded()
         movieTitleLabel.text = viewModel.movieTitle
         releaseDateLabel.text = viewModel.releaseDate
         genreLabel.text = viewModel.genre
-        
+        moviePosterImageView.image = nil
         
         viewModel.downloadImage { (image) in
-            self.moviePosterImageView.image = image
+            completion(image)
         }
     }
     

@@ -77,8 +77,17 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieTableCell", for: indexPath) as! MovieTableCell
-        movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row]))
+        let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieTableCell") as! MovieTableCell
+        movieCell.tag = indexPath.row
+        movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row])){
+            (image) in
+            if movieCell.tag == indexPath.row {
+                movieCell.moviePosterImageView.image = image
+            }
+            else{
+                print("Not Same")
+            }
+        }
         return movieCell
     }
     

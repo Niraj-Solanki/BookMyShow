@@ -49,7 +49,16 @@ extension SimilarMovieTableCell : UICollectionViewDelegate,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.reusableIdentifier, for: indexPath) as! SimilarMovieCollectionCell
-        movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row]))
+        movieCell.tag = indexPath.row
+        movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row])){ (image) in
+            if movieCell.tag == indexPath.row
+            {
+                movieCell.posterImageView.image = image
+            }
+            else{
+                print("Not Same")
+            }
+        }
         return movieCell
     }
     

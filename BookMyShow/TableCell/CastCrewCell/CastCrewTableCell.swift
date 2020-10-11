@@ -54,11 +54,30 @@ extension CastCrewTableCell : UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
+        
+        profileCell.tag = indexPath.row
+        // Cast Work
         if viewModel.cellType == .cast {
-            profileCell.configureCell(viewModel: ProfileCellViewModel(viewModel.castItems[indexPath.row]))
+            profileCell.configureCell(viewModel: ProfileCellViewModel(viewModel.castItems[indexPath.row])){ (image) in
+                if profileCell.tag == indexPath.row
+                {
+                    profileCell.userImageView?.image = image
+                }
+                else{
+                    print("Not Same")
+                }
+            }
         }
-        else{
-            profileCell.configureCell(viewModel: ProfileCellViewModel(viewModel.crewItems[indexPath.row]))
+        else{ // Crew Work
+            profileCell.configureCell(viewModel: ProfileCellViewModel(viewModel.crewItems[indexPath.row])){ (image) in
+                if profileCell.tag == indexPath.row
+                {
+                    profileCell.userImageView?.image = image
+                }
+                else{
+                    print("Not Same")
+                }
+            }
         }
         
         return profileCell
