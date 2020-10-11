@@ -47,6 +47,8 @@
 		493E80472532729000678905 /* WebVideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E80452532729000678905 /* WebVideoPlayerVC.swift */; };
 		493E80482532729000678905 /* WebVideoPlayerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E80462532729000678905 /* WebVideoPlayerVC.xib */; };
 		493E804B253274DA00678905 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E804A253274DA00678905 /* WebKit.framework */; };
+		493E804D2532EFDF00678905 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E804C2532EFDF00678905 /* SearchViewController.swift */; };
+		493E804F253311DE00678905 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E804E253311DE00678905 /* SearchViewModel.swift */; };
 		4976BC222530AB1000DDB821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976BC212530AB1000DDB821 /* AppDelegate.swift */; };
 		4976BC242530AB1000DDB821 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976BC232530AB1000DDB821 /* SceneDelegate.swift */; };
 		4976BC292530AB1000DDB821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4976BC272530AB1000DDB821 /* Main.storyboard */; };
@@ -106,6 +108,8 @@
 		493E80452532729000678905 /* WebVideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVideoPlayerVC.swift; sourceTree = "<group>"; };
 		493E80462532729000678905 /* WebVideoPlayerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebVideoPlayerVC.xib; sourceTree = "<group>"; };
 		493E804A253274DA00678905 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		493E804C2532EFDF00678905 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		493E804E253311DE00678905 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4976BC1E2530AB1000DDB821 /* BookMyShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookMyShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4976BC212530AB1000DDB821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4976BC232530AB1000DDB821 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 			children = (
 				493E800125310E2F00678905 /* MovieViewModel.swift */,
 				493E80182531E36100678905 /* MovieDetailViewModel.swift */,
+				493E804E253311DE00678905 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			children = (
 				493E7FE52530ED2A00678905 /* MovieViewController.swift */,
 				493E80102531B78C00678905 /* MovieDetailViewController.swift */,
+				493E804C2532EFDF00678905 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				493E7FFE253101D800678905 /* MovieListingAPI.swift in Sources */,
+				493E804F253311DE00678905 /* SearchViewModel.swift in Sources */,
 				493E7FF62531000A00678905 /* NetworkManager.swift in Sources */,
 				493E800925311FA900678905 /* ImageCache.swift in Sources */,
 				493E80112531B78C00678905 /* MovieDetailViewController.swift in Sources */,
@@ -506,6 +513,7 @@
 				493E80472532729000678905 /* WebVideoPlayerVC.swift in Sources */,
 				493E7FEA2530F1A100678905 /* MovieTableCell.swift in Sources */,
 				493E802225321CA100678905 /* CastCrewTableCell.swift in Sources */,
+				493E804D2532EFDF00678905 /* SearchViewController.swift in Sources */,
 				493E803F2532583700678905 /* SimilarTableCellViewModel.swift in Sources */,
 				493E803125324E0400678905 /* SimilarMovieTableCell.swift in Sources */,
 				493E801D25320EE700678905 /* MovieDetailCellViewModel.swift in Sources */,

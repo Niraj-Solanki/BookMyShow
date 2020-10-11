@@ -1,29 +1,43 @@
 //
-//  MovieViewModel.swift
+//  SearchViewModel.swift
 //  BookMyShow
 //
-//  Created by Neeraj Solanki on 10/10/20.
+//  Created by Neeraj Solanki on 11/10/20.
 //  Copyright © 2020 Mr.Solanki. All rights reserved.
 //
 
 import UIKit
-enum MovieObserverEnum {
+
+enum SearchObserverEnum {
     case dataLoading
     case dataLoaded
     case dataFailed
     case networkErroor
+    case searchUpdated
 }
 
-class MovieViewModel : NSObject {
+class SearchViewModel : NSObject {
     
-    var observerBlock:((_ observerType:MovieObserverEnum)->Void)?
+    var observerBlock:((_ observerType:SearchObserverEnum)->Void)?
     private var moviesModel:MoviesModel?
-    
     private var isApiRunning = false
+    private var lastSearchPage = 0
+    
+    private var movieItems:[Movie]? {
+        didSet{
+            observerBlock?(.searchUpdated)
+        }
+    }
     
     override init() {
         super.init()
         self.getMoviesList(pageNo: currentPage + 1)
+    }
+    
+    private var searchValue:String = ""
+    func updateSearch(text:String) {
+        searchValue = text
+        searchAlgo()
     }
     
     var nib:UINib{
@@ -35,7 +49,7 @@ class MovieViewModel : NSObject {
     }
     
     var items:[Movie] {
-        return moviesModel?.movies ?? []
+        return movieItems ?? []
     }
     
     var currentPage:Int{
@@ -50,15 +64,39 @@ class MovieViewModel : NSObject {
         getMoviesList(pageNo: currentPage + 1)
     }
     
+    
+    //Search Algorithm
+    private func searchAlgo() {
+        let searchTextArray = searchValue.split(separator: " ")
+        movieItems = moviesModel?.movies?.filter({ (movie) -> Bool in
+            let movieNameArr = (movie.title ?? "").split(separator: " ")
+            for searchWord in searchTextArray
+            {
+                var isMatch = false
+                for word in movieNameArr
+                {
+                    if word.prefix(searchWord.count).lowercased() == searchWord.lowercased() { isMatch = true; break}
+                }
+                if !isMatch {
+                    return false
+                }
+            }
+            return true
+        })
+    }
+    
     //MARK:- API Work
     private func getMoviesList(pageNo:Int) {
-        if isApiRunning {
+        if isApiRunning || pageNo == lastSearchPage{
             return
         }
+        
+        lastSearchPage = pageNo
+        
         self.observerBlock?(.dataLoading)
         let httpClient = HTTPClient.init(session: URLSession.shared)
         httpClient.dataTask(MovieDB.nowPlayings(pageNo)) { [weak self] (result) in
-            self?.isApiRunning = false
+            
             guard let self = self else { return }
             
             switch result {
@@ -75,6 +113,8 @@ class MovieViewModel : NSObject {
                         self.moviesModel?.movies?.append(contentsOf: moviesData.movies ?? [])
                         self.moviesModel?.page = moviesData.page
                     }
+                    self.searchAlgo()
+                    self.isApiRunning = false
                     self.observerBlock?(.dataLoaded)
                 } catch {
                     print(error.localizedDescription)
@@ -88,3 +128,4 @@ class MovieViewModel : NSObject {
     }
     
 }
+

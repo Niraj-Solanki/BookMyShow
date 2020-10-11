@@ -1,59 +1,76 @@
 //
-//  MovieViewController.swift
+//  SearchViewController.swift
 //  BookMyShow
 //
-//  Created by Neeraj Solanki on 10/10/20.
+//  Created by Neeraj Solanki on 11/10/20.
 //  Copyright © 2020 Mr.Solanki. All rights reserved.
 //
 
 import UIKit
 
-class MovieViewController: UIViewController {
-    
+class SearchViewController: UIViewController, UINavigationControllerDelegate{
+
     //MARK:- Outlets
     @IBOutlet weak var movieListTableView: UITableView!
     
+    
     //MARK:- Objects
-    var viewModel:MovieViewModel = MovieViewModel()
+    let search = UISearchController(searchResultsController: nil)
+    let viewModel:SearchViewModel = SearchViewModel()
+    
     
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeVariables()
+        
     }
-    
+
     //MARK:- Custom Methods
     func initializeVariables() {
+        title = "Search Movies"
+        initializeSearchController()
+        navigationController?.delegate = self
         movieListTableView.register(viewModel.nib, forCellReuseIdentifier: viewModel.reusableIdentifier)
         bindingWork()
-    }
+       }
+    
+    func initializeSearchController() {
+          search.searchResultsUpdater = self
+          search.obscuresBackgroundDuringPresentation = false
+          search.automaticallyShowsCancelButton = true
+          search.hidesNavigationBarDuringPresentation = false
+          search.searchBar.placeholder = "Type something here to search"
+          navigationItem.searchController = search
+      }
     
     func bindingWork() {
-           viewModel.observerBlock = {  [weak self] (state) in
-               DispatchQueue.main.async {
-                   switch state {
-                   case .dataLoaded:
-                       print("Data Loaded")
-                       self?.movieListTableView.reloadData()
-                   case .dataFailed:
-                       print("Data Failed")
-                   case .dataLoading:
-                       print("Data Loading")
-                   default:
-                       print("Default")
-                   }
-               }
-           }
-       }
-    //MARK:- Action Methods
-    
-    @IBAction func searchActon(_ sender: Any) {
-        let searchViewController = self.storyboard?.instantiateViewController(identifier: String(describing: SearchViewController.self)) as! SearchViewController
-        navigationController?.pushViewController(searchViewController, animated: true)
+        viewModel.observerBlock = {  [weak self] (state) in
+            DispatchQueue.main.async {
+                switch state {
+                case .searchUpdated:
+                    self?.movieListTableView.reloadData()
+                default:
+                    print("Default")
+                }
+            }
+        }
     }
 }
 
-extension MovieViewController : UITableViewDelegate,UITableViewDataSource
+
+//MARK:- UISearchBarDelegate
+extension SearchViewController : UISearchResultsUpdating
+{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        movieListTableView.endUpdates()
+        viewModel.updateSearch(text: text)
+    }
+}
+
+
+extension SearchViewController : UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
@@ -76,7 +93,7 @@ extension MovieViewController : UITableViewDelegate,UITableViewDataSource
     }
 }
 
-extension MovieViewController : UIScrollViewDelegate
+extension SearchViewController : UIScrollViewDelegate
 {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -85,10 +102,11 @@ extension MovieViewController : UIScrollViewDelegate
         let scrollContentSizeHeight = scrollView.contentSize.height
         
         //Pagination when 3 item left to view
-        let contentHeight = 186 * 3
+        let contentHeight = 186 * 1
         if (scrollOffset + scrollViewHeight >= (scrollContentSizeHeight - CGFloat(contentHeight))) && (viewModel.currentPage < viewModel.totalPages)
         {
             viewModel.loadMore()
         }
     }
 }
+

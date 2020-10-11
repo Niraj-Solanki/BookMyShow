@@ -60,7 +60,7 @@ class MovieDetailCell: UITableViewCell {
         genreLabel.text = viewModel.genre
         storyLineLabel.text = viewModel.storyline
         movieTitleLabel.text = viewModel.movieTitle
-        overviewLabel.text = viewModel.languages
+        overviewLabel.text = viewModel.langAndRuntine
         rreleaseDateLabel.text = viewModel.releaseDate
         ratingLabel.text = viewModel.rating
         

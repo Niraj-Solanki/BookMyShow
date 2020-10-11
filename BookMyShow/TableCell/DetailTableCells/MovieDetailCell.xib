@@ -107,34 +107,6 @@
                                     <constraint firstAttribute="bottom" secondItem="MpW-mt-tLp" secondAttribute="bottom" id="f52-nK-Ce3"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-UB-xms" userLabel="StooryLine">
-                                <rect key="frame" x="0.0" y="510" width="100" height="25"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3es-IO-LBo">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                        <color key="textColor" name="NG100"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="P700"/>
-                                <constraints>
-                                    <constraint firstItem="3es-IO-LBo" firstAttribute="leading" secondItem="5ux-UB-xms" secondAttribute="leading" id="6s2-dt-J2u"/>
-                                    <constraint firstAttribute="width" constant="100" id="IJI-Mu-qxP"/>
-                                    <constraint firstAttribute="height" constant="25" id="PJU-op-ikw"/>
-                                    <constraint firstAttribute="bottom" secondItem="3es-IO-LBo" secondAttribute="bottom" id="WOb-ur-n7g"/>
-                                    <constraint firstItem="3es-IO-LBo" firstAttribute="top" secondItem="5ux-UB-xms" secondAttribute="top" id="Yz4-2e-wW7"/>
-                                    <constraint firstAttribute="trailing" secondItem="3es-IO-LBo" secondAttribute="trailing" id="ajy-8A-gf9"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpM-lB-qwc">
-                                <rect key="frame" x="20" y="555" width="346" height="73"/>
-                                <string key="text">At least 2+ years’ experience in iOS App Development
-Strong Object-oriented design and programming skills in Objective-C and Swift 4.x or RxSwift</string>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                <color key="textColor" name="NG800"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gY2-OT-8Ml" userLabel="ratingView">
                                 <rect key="frame" x="0.0" y="465" width="100" height="25"/>
                                 <subviews>
@@ -165,6 +137,34 @@ Strong Object-oriented design and programming skills in Objective-C and Swift 4.
                                     <constraint firstItem="L7l-DQ-t1a" firstAttribute="leading" secondItem="gY2-OT-8Ml" secondAttribute="leading" constant="40" id="npq-j9-Rvu"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-UB-xms" userLabel="StooryLine">
+                                <rect key="frame" x="0.0" y="510" width="100" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3es-IO-LBo">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" name="NG100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="P700"/>
+                                <constraints>
+                                    <constraint firstItem="3es-IO-LBo" firstAttribute="leading" secondItem="5ux-UB-xms" secondAttribute="leading" id="6s2-dt-J2u"/>
+                                    <constraint firstAttribute="width" constant="100" id="IJI-Mu-qxP"/>
+                                    <constraint firstAttribute="height" constant="25" id="PJU-op-ikw"/>
+                                    <constraint firstAttribute="bottom" secondItem="3es-IO-LBo" secondAttribute="bottom" id="WOb-ur-n7g"/>
+                                    <constraint firstItem="3es-IO-LBo" firstAttribute="top" secondItem="5ux-UB-xms" secondAttribute="top" id="Yz4-2e-wW7"/>
+                                    <constraint firstAttribute="trailing" secondItem="3es-IO-LBo" secondAttribute="trailing" id="ajy-8A-gf9"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpM-lB-qwc">
+                                <rect key="frame" x="20" y="555" width="346" height="73"/>
+                                <string key="text">At least 2+ years’ experience in iOS App Development
+Strong Object-oriented design and programming skills in Objective-C and Swift 4.x or RxSwift</string>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <color key="textColor" name="NG800"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

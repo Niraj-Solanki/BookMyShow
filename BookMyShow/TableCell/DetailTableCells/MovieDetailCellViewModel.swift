@@ -28,10 +28,26 @@ class MovieDetailCellViewModel {
       }
     
     var languages:String{
+        var bulletAtFirst = true
         return movieModel?.spokenLanguages?.map({ (language) -> String in
+            if bulletAtFirst
+            {
+                bulletAtFirst = false
+                return (language.name ?? "")
+            }
             return " " + Constants.StaticData.bulletSymbol + " " + (language.name ?? "")
         }).joined() ?? ""
     }
+    
+    var langAndRuntine:String{
+        
+        // If Have Duration
+        if let runDuration = movieModel?.runtime, runDuration > 0 {
+            return languages + " \(Constants.StaticData.bulletSymbol) " + "\(runDuration) Mins"
+        }
+        return languages
+    }
+    
     
     
     var moviePosterUrl:String {
@@ -47,7 +63,13 @@ class MovieDetailCellViewModel {
     
     
     var genre:String {
+        var bulletAtFirst = true
         return movieModel?.genres?.map({ (genre) -> String in
+            if bulletAtFirst
+            {
+                bulletAtFirst = false
+                return (genre.name ?? "")
+            }
             return " " + Constants.StaticData.bulletSymbol + " " + (genre.name ?? "")
         }).joined() ?? ""
     }
