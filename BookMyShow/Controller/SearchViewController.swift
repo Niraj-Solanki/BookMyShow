@@ -86,7 +86,7 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieTableCell") as! MovieTableCell
+        let movieCell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableIdentifier) as! MovieTableCell
         movieCell.tag = indexPath.row
         movieCell.configureCell(viewModel: MovieCellViewModel(movie: viewModel.items[indexPath.row])){
             (image) in
@@ -132,8 +132,8 @@ extension SearchViewController : UIScrollViewDelegate
         let scrollOffset = scrollView.contentOffset.y
         let scrollContentSizeHeight = scrollView.contentSize.height
         
-        //Pagination when 3 item left to view
-        let contentHeight = 186 * 1
+        //Pagination when 2 item left to view
+        let contentHeight = 186 * 2
         if (scrollOffset + scrollViewHeight >= (scrollContentSizeHeight - CGFloat(contentHeight))) && (viewModel.currentPage < viewModel.totalPages)
         {
             viewModel.loadMore()

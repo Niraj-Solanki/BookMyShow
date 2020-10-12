@@ -26,16 +26,23 @@ class SearchViewControllerUnitTest: XCTestCase {
     }
     
     func testObserverOnSearch() {
-        searchViewController.viewModel.observerBlock = { (state) in
+        let expect = expectation(description: "Observation Failed")
+        searchViewController.viewModel.observerBlock = { [weak self] (state) in
             switch state {
             case .searchUpdated:
-                XCTAssert(self.searchViewController.search.searchBar.text == "demo","Seach Not Working")
+                DispatchQueue.main.async {
+                    XCTAssert(self?.searchViewController.search.searchBar.text == "demo","Seach Not Working")
+                    expect.fulfill()
+                }
             default:
                 print("")
             }
         }
-        self.searchViewController.search.searchBar.text = "demo "
+        self.searchViewController.search.searchBar.text = "demo"
         searchViewController.viewModel.updateSearch(text: self.searchViewController.search.searchBar.text ?? "")
+         waitForExpectations(timeout: 10) { error in
+           XCTAssertNil(error)
+         }
     }
 }
 

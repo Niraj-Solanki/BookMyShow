@@ -9,16 +9,21 @@
 import UIKit
 
 class SimilarMovieCollectionCell: UICollectionViewCell {
+    
+    //MARK:- Outlets
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overViewlabel: UILabel!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var mainView: UIView!
     
+    //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    //MARK:- Configure Method
     
     func configureCell(viewModel:MovieCellViewModel,completion:@escaping ((UIImage?) ->Void)) {
         titleLabel.text = viewModel.movieTitle

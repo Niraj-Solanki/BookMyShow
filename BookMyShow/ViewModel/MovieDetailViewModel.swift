@@ -58,7 +58,7 @@ class MovieDetailViewModel : NSObject {
     }
     
     
-    
+    // Manage All ViewModel and return 
     var items:[AnyObject] {
         return cellViewModels
     }

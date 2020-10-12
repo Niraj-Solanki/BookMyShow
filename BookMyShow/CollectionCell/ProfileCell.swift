@@ -21,6 +21,7 @@ class ProfileCell: UICollectionViewCell {
         // Initialization code
     }
     
+    //MARK:- Configure Methods
     func configureCell(viewModel:ProfileCellViewModel,completion:@escaping ((UIImage?) ->Void)) {
         userNameLabel.text = viewModel.userName
         userAliasLabel.text = viewModel.aliasName

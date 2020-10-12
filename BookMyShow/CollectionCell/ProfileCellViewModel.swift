@@ -13,11 +13,13 @@ class ProfileCellViewModel {
     private var castModel:CastModel?
     private var crewModel:CrewModel?
     
+    // Init for Cast Profile
     init(_ castModelData:CastModel) {
         castModel = castModelData
         type = .cast
     }
     
+    // Init for Crew Profile
     init(_ crewModelData:CrewModel) {
         crewModel = crewModelData
         type = .crew

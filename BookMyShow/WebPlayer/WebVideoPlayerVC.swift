@@ -24,9 +24,5 @@ class WebVideoPlayerVC: UIViewController {
             webView.load(URLRequest(url: url))
         }
     }
-
-    @IBAction func backAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 }
 

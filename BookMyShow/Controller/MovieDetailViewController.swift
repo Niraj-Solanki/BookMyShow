@@ -25,9 +25,12 @@ class MovieDetailViewController: UIViewController {
     // MARK: - Custom Methods
     func initializeVariables() {
         
+        // register Custom Xibs
         movieDetailTableView.register(viewModel.detailCellNib, forCellReuseIdentifier: viewModel.detailCellIdentifier)
         movieDetailTableView.register(viewModel.castCrewCellNib, forCellReuseIdentifier: viewModel.castCrewCellIdentifier)
         movieDetailTableView.register(viewModel.similarMovieCellNib, forCellReuseIdentifier: viewModel.similarMovieCellIdentifier)
+        
+        // Binding WOrk Call
         bindingWork()
     }
     
@@ -103,7 +106,7 @@ extension MovieDetailViewController : UITableViewDelegate,UITableViewDataSource
             }
             return cell
         }
-        else{
+        else{ // Else No matched Cell found
             let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.detailCellIdentifier) as! MovieDetailCell
             return cell
         }

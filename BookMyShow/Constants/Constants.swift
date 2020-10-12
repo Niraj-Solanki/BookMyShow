@@ -16,6 +16,7 @@ struct Constants {
     }
     
     struct StaticData {
+        static let recentSearchLimit = 5
         static let bulletSymbol = "•"
         static let genreString = """
         [

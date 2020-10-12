@@ -65,7 +65,6 @@ class SearchViewModel : NSObject {
     }
     
     
-    
     var items:[Movie] {
         // If searrchbar is highlighted return filtered movies ootherwise return recent search
         if !isSearchBarHighlited && RecentSearchDataManager.shared.getRecentSearch().count > 0{
@@ -117,7 +116,7 @@ class SearchViewModel : NSObject {
             return
         }
         
-        lastSearchPage = pageNo
+        lastSearchPage = pageNo // Avoid multiple API Call with last check
         
         self.observerBlock?(.dataLoading)
         let httpClient = HTTPClient.init(session: URLSession.shared)

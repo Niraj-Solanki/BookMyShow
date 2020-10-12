@@ -18,7 +18,9 @@ class RecentSearchDataManager : RecentSearchManagerProtocol {
     
     private init() { movies = [] }
     
+    // Update Movie
     func updateRecentSearch(newSearch: Movie) {
+        // If movie already in list can't do anything
         if !(movies.contains(where: { (movie) -> Bool in
             if (movie.id ?? 0) == (newSearch.id ?? 0)
             {
@@ -27,14 +29,14 @@ class RecentSearchDataManager : RecentSearchManagerProtocol {
             return false
         }))
         {
-            if movies.count < 5 {
+            // If Movie is not in list then check trash hold and update movie
+            if movies.count < Constants.StaticData.recentSearchLimit {
                 movies.insert(newSearch, at: 0)
             }
-            else{
-                movies.remove(at: 4)
+            else{ // If Movie is not in list and limit is reached By 5 then remove last one and add new.
+                movies.remove(at: Constants.StaticData.recentSearchLimit - 1)
                 movies.insert(newSearch, at: 0)
             }
-            
         }
         
     }
