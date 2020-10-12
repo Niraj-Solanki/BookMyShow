@@ -18,6 +18,7 @@ class MovieViewModel : NSObject {
     
     var observerBlock:((_ observerType:MovieObserverEnum)->Void)?
     private var moviesModel:MoviesModel?
+    private var lastSearchPage = 0
     
     private var isApiRunning = false
     
@@ -52,9 +53,12 @@ class MovieViewModel : NSObject {
     
     //MARK:- API Work
     private func getMoviesList(pageNo:Int) {
-        if isApiRunning {
+        if isApiRunning || lastSearchPage == pageNo {
             return
         }
+        
+        lastSearchPage = pageNo
+        
         self.observerBlock?(.dataLoading)
         let httpClient = HTTPClient.init(session: URLSession.shared)
         httpClient.dataTask(MovieDB.nowPlayings(pageNo)) { [weak self] (result) in
