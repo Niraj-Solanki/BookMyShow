@@ -24,6 +24,7 @@ Swift:- 5.2
 
 
 ## Contact
-<b>Developer</b> Neeraj Solanki </br>
-</b>Profile</b> Senior iOS Engineer </br>
-</b>Website<b> Https//neerajsolanki.xyz
+<b>Developer :- </b> Neeraj Solanki </br>
+</b>Profile :- </b> Senior iOS Engineer </br>
+</b>Website :- <b> <a href="https//neerajsolanki.xyz">Click Here</a> </br>
+</b>LinkedIn :- <b> <a href="https://www.linkedin.com/in/neerajsolanki/">Click Here</a>
